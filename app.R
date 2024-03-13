@@ -1,49 +1,44 @@
-#
-# This is a Shiny web application. You can run the application by clicking
-# the 'Run App' button above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
-
+# Carga de la librería Shiny
 library(shiny)
 
-# Define UI for application that draws a histogram
+# Define la interfaz de usuario (UI)
 ui <- fluidPage(
-
-    # Application title
-    titlePanel("Old Faithful Geyser Data"),
-
-    # Sidebar with a slider input for number of bins 
+    # Título de la aplicación
+    titlePanel("Calculadora Simple"),
+    
+    # Entrada para que el usuario introduzca un número
     sidebarLayout(
         sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
+            numericInput("numero", label = "Introduce un número:", value = 1)
         ),
-
-        # Show a plot of the generated distribution
+        
+        # Salida para mostrar el resultado del cálculo
         mainPanel(
-           plotOutput("distPlot")
+            textOutput("resultado_texto")
         )
     )
 )
 
-# Define server logic required to draw a histogram
+# Define la lógica del servidor
 server <- function(input, output) {
-
-    output$distPlot <- renderPlot({
-        # generate bins based on input$bins from ui.R
-        x    <- faithful[, 2]
-        bins <- seq(min(x), max(x), length.out = input$bins + 1)
-
-        # draw the histogram with the specified number of bins
-        hist(x, breaks = bins, col = 'darkgray', border = 'white')
+    # Definir la fórmula para el cálculo
+    calcular_resultado <- function(numero) {
+        # Aquí puedes ingresar tu fórmula
+        # Por ejemplo, si quieres calcular el cuadrado del número:
+        resultado <- numero^2
+        return(resultado)
+    }
+    
+    # Calcular el resultado basado en la entrada del usuario
+    resultado <- reactive({
+        calcular_resultado(input$numero)
+    })
+    
+    # Mostrar el resultado en la interfaz
+    output$resultado_texto <- renderText({
+        paste("El resultado del cálculo es:", resultado())
     })
 }
 
-# Run the application 
+# Crea la aplicación Shiny
 shinyApp(ui = ui, server = server)
