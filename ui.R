@@ -1,19 +1,21 @@
 # ui.R
 library(shiny)
 
-# Define la interfaz de usuario para la aplicación
+# Define la interfaz de usuario
 ui <- fluidPage(
-  titlePanel("Calculadora Avanzada de Tamaño Muestral"),
+  titlePanel("Calculadora de Tamaño Muestral"),
+  
   sidebarLayout(
     sidebarPanel(
-      selectInput("metodo", "Método de cálculo:",
-                  choices = c("Método 1" = "m1", "Método 2" = "m2")),
-      numericInput("numero", "Introduce un número:", value = 1, min = 0, step = 1),
-      actionButton("calcular", "Calcular")
+      numericInput("mean", "Media Estimada:", value = 50),
+      numericInput("sd", "Desviación Estándar Estimada:", value = 10),
+      numericInput("conf_level", "Nivel de Confianza (0-1):", value = 0.95, min = 0, max = 1),
+      numericInput("margin_error", "Margen de Error:", value = 5),
+      actionButton("calc", "Calcular")
     ),
+    
     mainPanel(
-      textOutput("resultado_texto"),
-      plotOutput("plot")
+      textOutput("sample_size")
     )
   )
 )
