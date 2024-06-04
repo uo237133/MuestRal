@@ -1,8 +1,7 @@
-# server.R
-library(shiny)
+#server.R
+#----------
 
-# Cargar el contenido de la ayuda
-source("help_text.R")
+library(shiny)
 
 # Define el servidor
 server <- function(input, output, session) {

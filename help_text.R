@@ -1,4 +1,5 @@
-# help_text.R
+#help_text.R
+#----------
 
 help_content <- HTML('
   <p>El tamaño muestral es el número de observaciones o replicaciones que se incluyen en un estudio. Es importante para asegurar que los resultados del estudio sean estadísticamente significativos.</p>
