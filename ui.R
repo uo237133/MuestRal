@@ -6,7 +6,6 @@ library(shinythemes)
 library(shinyjs)
 library(shinydashboard)
 
-# Define la interfaz de usuario
 ui <- dashboardPage(
   dashboardHeader(title = "Cálculo del Tamaño Muestral"),
   dashboardSidebar(
@@ -40,7 +39,8 @@ ui <- dashboardPage(
                     numericInput("p", "Proporción (p)", value = 0.5, step = 0.01),
                     numericInput("conf_level_repos", "Nivel de Confianza (conf_level)", value = 0.95, step = 0.01),
                     numericInput("margin_error_repos", "Margen de Error (margin_error)", value = 0.05, step = 0.01)
-                  )
+                  ),
+                  actionButton("calculate", "Calcular"),
                 ),
                 box(
                   title = "Resultado",
@@ -48,7 +48,8 @@ ui <- dashboardPage(
                   solidHeader = TRUE,
                   collapsible = TRUE,
                   width = 8,
-                  verbatimTextOutput("result")
+                  verbatimTextOutput("result"),
+                  plotOutput("samplePlot")
                 )
               )
       ),
