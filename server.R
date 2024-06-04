@@ -1,21 +1,29 @@
 # server.R
 library(shiny)
 
-# Carga las fórmulas desde el archivo externo
-source("formulas.R")
+# Cargar el contenido de la ayuda
+source("help_text.R")
 
 # Define el servidor
-server <- function(input, output) {
+server <- function(input, output, session) {
+  observeEvent(input$help, {
+    showModal(modalDialog(
+      title = "Ayuda: Tamaño Muestral",
+      withMathJax(help_content),
+      easyClose = TRUE,
+      footer = NULL
+    ))
+  })
   
-  observeEvent(input$calc, {
-    n <- calcular_tamano_muestral_media(
-      sd = input$sd,
-      conf_level = input$conf_level,
-      margin_error = input$margin_error
-    )
-    
-    output$sample_size <- renderText({
-      paste("El tamaño muestral necesario es:", n)
-    })
+  output$result <- renderPrint({
+    if (input$sampling_type == "sin_reposicion") {
+      req(input$sd, input$conf_level, input$margin_error)
+      n <- calcular_tamano_muestral_media(input$sd, input$conf_level, input$margin_error)
+      paste("El tamaño muestral requerido (sin reposición) es:", n)
+    } else if (input$sampling_type == "con_reposicion") {
+      req(input$p, input$conf_level_repos, input$margin_error_repos)
+      n <- calcular_tamano_muestral_con_reposicion(input$p, input$conf_level_repos, input$margin_error_repos)
+      paste("El tamaño muestral requerido (con reposición) es:", n)
+    }
   })
 }
