@@ -1,11 +1,5 @@
 # server.R
 
-library(shiny)
-library(shinyjs)
-
-source("formulas.R")
-source("help_text.R")
-
 server <- function(input, output, session) {
   result <- eventReactive(input$calculate, {
     validate(
@@ -58,3 +52,4 @@ server <- function(input, output, session) {
     }
   })
 }
+
