@@ -2,21 +2,11 @@
 
 library(shiny)
 library(shinyjs)
-library(ggplot2)
 
 source("formulas.R")
 source("help_text.R")
 
 server <- function(input, output, session) {
-  observeEvent(input$help, {
-    showModal(modalDialog(
-      title = "Ayuda: Tamaño Muestral",
-      withMathJax(help_content),
-      easyClose = TRUE,
-      footer = NULL
-    ))
-  })
-  
   result <- eventReactive(input$calculate, {
     validate(
       need(input$sampling_type, "Selecciona un tipo de muestreo."),
@@ -64,50 +54,6 @@ server <- function(input, output, session) {
         paste("El tamaño muestral requerido para estimar la proporción (población finita) es:", res$n)
       } else if (res$type == "diferencia_medias") {
         paste("El tamaño muestral requerido para la diferencia entre dos medias es:", res$n)
-      }
-    }
-  })
-  
-  output$samplePlot <- renderPlot({
-    res <- result()
-    if (!is.null(res)) {
-      if (res$type == "media") {
-        data <- data.frame(x = 1:res$n, y = rnorm(res$n, mean = 0, sd = input$sd))
-        ggplot(data, aes(x = x, y = y)) +
-          geom_point() +
-          labs(title = "Estimación de una Media", x = "Índice de Muestra", y = "Valor")
-      } else if (res$type == "proporcion_reposicion") {
-        data <- data.frame(x = 1:res$n, y = rbinom(res$n, size = 1, prob = input$p))
-        ggplot(data, aes(x = x, y = y)) +
-          geom_bar(stat = "identity") +
-          labs(title = "Estimación de una Proporción (con Reposición)", x = "Índice de Muestra", y = "Valor")
-      } else if (res$type == "proporcion_poblacion_finita") {
-        data <- data.frame(x = 1:res$n, y = rbinom(res$n, size = 1, prob = input$p))
-        ggplot(data, aes(x = x, y = y)) +
-          geom_bar(stat = "identity") +
-          labs(title = "Estimación de una Proporción (Población Finita)", x = "Índice de Muestra", y = "Valor")
-      } else if (res$type == "diferencia_medias") {
-        data1 <- data.frame(grupo = "Población 1", y = rnorm(res$n, mean = 0, sd = input$sd1))
-        data2 <- data.frame(grupo = "Población 2", y = rnorm(res$n, mean = 0, sd = input$sd2))
-        data <- rbind(data1, data2)
-        ggplot(data, aes(x = grupo, y = y)) +
-          geom_boxplot() +
-          labs(title = "Comparación de Dos Medias", x = "Grupo", y = "Valor")
-      }
-    }
-  })
-  
-  output$plotDescription <- renderText({
-    res <- result()
-    if (!is.null(res)) {
-      if (res$type == "media") {
-        "Este gráfico muestra una estimación de una media utilizando una distribución normal con la desviación estándar especificada."
-      } else if (res$type == "proporcion_reposicion") {
-        "Este gráfico muestra una estimación de una proporción (con reposición) utilizando una distribución binomial."
-      } else if (res$type == "proporcion_poblacion_finita") {
-        "Este gráfico muestra una estimación de una proporción en una población finita utilizando una distribución binomial."
-      } else if (res$type == "diferencia_medias") {
-        "Este gráfico compara las medias de dos poblaciones utilizando gráficos de cajas para visualizar las distribuciones."
       }
     }
   })
