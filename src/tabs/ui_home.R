@@ -1,4 +1,4 @@
-# tabs/ui_home.R
+# src/tabs/ui_home.R
 
 ui_home <- tabItem(
   tabName = "home",

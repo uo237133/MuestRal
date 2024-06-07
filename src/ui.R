@@ -1,4 +1,4 @@
-# ui.R
+# src/ui.R
 
 source("packages.R")
 

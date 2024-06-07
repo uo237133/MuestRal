@@ -1,4 +1,4 @@
-# app.R
+# src/app.R
 
 source("ui.R")
 source("server.R")

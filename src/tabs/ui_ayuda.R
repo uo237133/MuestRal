@@ -1,4 +1,4 @@
-# help_text.R
+# src/tabs/ui_ayuda.R
 
 help_content <- HTML('
   <h3>Ayuda: Tama&ntilde;o Muestral</h3>
@@ -70,4 +70,17 @@ help_content <- HTML('
     <li><b>Control de Calidad:</b> Para determinar el tama&ntilde;o de las muestras necesarias para verificar que un lote de productos cumple con los est&aacute;ndares de calidad.</li>
   </ul>
 ')
+
+ui_ayuda <- tabItem(
+  tabName = "ayuda",
+  fluidRow(
+    box(
+      title = "Información sobre el Tamaño Muestral",
+      status = "info",
+      solidHeader = TRUE,
+      width = 12,
+      withMathJax(help_content)
+    )
+  )
+)
 

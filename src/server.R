@@ -1,4 +1,4 @@
-# server.R
+# src/server.R
 
 server <- function(input, output, session) {
   result <- eventReactive(input$calculate, {

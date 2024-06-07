@@ -1,4 +1,4 @@
-# formulas.R
+# src/formulas.R
 
 # Función para calcular el tamaño muestral para una media
 calcular_tamano_muestral_media <- function(sd, conf_level, margin_error) {

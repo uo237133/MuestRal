@@ -1,4 +1,4 @@
-# packages.R
+# src/packages.R
 
 # Cargar librerías
 library(shiny)
@@ -8,8 +8,9 @@ library(shinydashboard)
 
 # Cargar archivos de configuración
 source("formulas.R")
-source("help_text.R")
-addResourcePath("img", "img")
+
+# Añadir la ruta de los recursos estático
+addResourcePath("img", "../img")
 
 # Cargar archivos UI
 source("tabs/ui_home.R")
