@@ -1,4 +1,4 @@
-# src/packages.R
+# packages.R
 
 # Cargar librerías
 library(shiny)

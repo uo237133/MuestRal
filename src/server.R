@@ -1,4 +1,4 @@
-# src/server.R
+# server.R
 
 server <- function(input, output, session) {
   result <- eventReactive(input$calculate, {
@@ -37,6 +37,12 @@ server <- function(input, output, session) {
     }
   })
   
+  output$show_result <- reactive({
+    !is.null(result())
+  })
+  
+  outputOptions(output, "show_result", suspendWhenHidden = FALSE)
+  
   output$result <- renderPrint({
     res <- result()
     if (!is.null(res)) {
@@ -52,4 +58,3 @@ server <- function(input, output, session) {
     }
   })
 }
-

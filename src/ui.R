@@ -1,9 +1,9 @@
-# src/ui.R
+# ui.R
 
 source("packages.R")
 
 ui <- dashboardPage(
-  dashboardHeader(title = "Cálculo del Tamaño Muestral"),
+  dashboardHeader(title = "RShinyMuestreo"),
   dashboardSidebar(
     sidebarMenu(
       menuItem("Home", tabName = "home", icon = icon("home")),

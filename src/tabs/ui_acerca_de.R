@@ -1,4 +1,4 @@
-# src/tabs/ui_acerca_de.R
+# ui_acerca_de.R
 
 ui_acerca_de <- tabItem(
   tabName = "acerca_de",

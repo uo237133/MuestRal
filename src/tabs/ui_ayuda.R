@@ -1,4 +1,4 @@
-# src/tabs/ui_ayuda.R
+# ui_ayuda.R
 
 help_content <- HTML('
   <h3>Ayuda: Tama&ntilde;o Muestral</h3>
