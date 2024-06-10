@@ -1,33 +1,45 @@
 # formulas.R
 
 # Función para calcular el tamaño muestral para una media
-calcular_tamano_muestral_media <- function(sd, conf_level, margin_error) {
-  z <- qnorm(1 - (1 - conf_level) / 2)
-  n <- (z * sd / margin_error) ^ 2
-  n <- ceiling(n)  # Redondea al siguiente número entero
+calcular_tamano_muestreo_media <- function(sampling_method, estimation_precision, sd, error, confidence_level = NULL) {
+  if (sampling_method == "MAS") {
+    if (estimation_precision == "error_muestreo") {
+      # Aquí iría la fórmula para el M.A.S con error de muestreo basado en la media
+      n <- "Fórmula para M.A.S con error de muestreo y media"
+    } else if (estimation_precision == "error_max_admisible") {
+      # Aquí iría la fórmula para el M.A.S con error máximo admisible basado en la media
+      n <- "Fórmula para M.A.S con error máximo admisible y media"
+    }
+  } else if (sampling_method == "MACR") {
+    if (estimation_precision == "error_muestreo") {
+      # Aquí iría la fórmula para el M.A.C.R con error de muestreo basado en la media
+      n <- "Fórmula para M.A.C.R con error de muestreo y media"
+    } else if (estimation_precision == "error_max_admisible") {
+      # Aquí iría la fórmula para el M.A.C.R con error máximo admisible basado en la media
+      n <- "Fórmula para M.A.C.R con error máximo admisible y media"
+    }
+  }
   return(n)
 }
 
-# Función para calcular el tamaño muestral para muestreo simple con reposición
-calcular_tamano_muestral_con_reposicion <- function(p, conf_level, margin_error) {
-  z <- qnorm(1 - (1 - conf_level) / 2)
-  n <- (z^2 * p * (1 - p)) / margin_error^2
-  n <- ceiling(n)  # Redondea al siguiente número entero
-  return(n)
-}
-
-# Función para calcular el tamaño muestral para muestreo simple sin reposición
-calcular_tamano_muestral_sin_reposicion <- function(N, p, conf_level, margin_error) {
-  z <- qnorm(1 - (1 - conf_level) / 2)
-  n <- (N * z^2 * p * (1 - p)) / (margin_error^2 * (N - 1) + z^2 * p * (1 - p))
-  n <- ceiling(n)  # Redondea al siguiente número entero
-  return(n)
-}
-
-# Función para calcular el tamaño muestral para la diferencia entre dos medias
-calcular_tamano_muestral_diferencia_medias <- function(sd1, sd2, conf_level, margin_error) {
-  z <- qnorm(1 - (1 - conf_level) / 2)
-  n <- (z * sqrt(sd1^2 + sd2^2) / margin_error) ^ 2
-  n <- ceiling(n)  # Redondea al siguiente número entero
+# Función para calcular el tamaño muestral para una proporción
+calcular_tamano_muestreo_proporcion <- function(sampling_method, estimation_precision, proportion_estimate, error, confidence_level = NULL) {
+  if (sampling_method == "MAS") {
+    if (estimation_precision == "error_muestreo") {
+      # Aquí iría la fórmula para el M.A.S con error de muestreo basado en la proporción
+      n <- "Fórmula para M.A.S con error de muestreo y proporción"
+    } else if (estimation_precision == "error_max_admisible") {
+      # Aquí iría la fórmula para el M.A.S con error máximo admisible basado en la proporción
+      n <- "Fórmula para M.A.S con error máximo admisible y proporción"
+    }
+  } else if (sampling_method == "MACR") {
+    if (estimation_precision == "error_muestreo") {
+      # Aquí iría la fórmula para el M.A.C.R con error de muestreo basado en la proporción
+      n <- "Fórmula para M.A.C.R con error de muestreo y proporción"
+    } else if (estimation_precision == "error_max_admisible") {
+      # Aquí iría la fórmula para el M.A.C.R con error máximo admisible basado en la proporción
+      n <- "Fórmula para M.A.C.R con error máximo admisible y proporción"
+    }
+  }
   return(n)
 }

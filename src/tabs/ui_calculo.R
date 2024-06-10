@@ -8,31 +8,32 @@ ui_calculo <- tabItem(
       status = "primary",
       solidHeader = TRUE,
       width = 12,
-      selectInput("sampling_type", "Tipo de Muestreo",
-                  choices = list("Media" = "media",
-                                 "Proporción con Reposición" = "proporcion_reposicion",
-                                 "Proporción con Población Finita" = "proporcion_poblacion_finita",
-                                 "Diferencia entre Medias" = "diferencia_medias")),
+      selectInput("sampling_method", "Tipo de Muestreo",
+                  choices = list("Muestreo Aleatorio Simple (M.A.S)" = "MAS",
+                                 "Muestreo Aleatorio con Reposición (M.A.C.R)" = "MACR")),
+      selectInput("parameter_of_interest", "Parámetro de Interés",
+                  choices = list("Media Poblacional" = "media",
+                                 "Proporción Poblacional" = "proporcion")),
       conditionalPanel(
-        condition = "input.sampling_type == 'media'",
-        numericInput("sd", "Desviación Estándar (sd)", value = 1)
+        condition = "input.parameter_of_interest == 'media'",
+        numericInput("sd", "Estimación de la Dispersión (SD)", value = 1, min = 0)
       ),
       conditionalPanel(
-        condition = "input.sampling_type == 'proporcion_reposicion'",
-        numericInput("p", "Proporción (p)", value = 0.5, min = 0, max = 1, step = 0.01)
+        condition = "input.parameter_of_interest == 'proporcion'",
+        numericInput("proportion_estimate", "Estimación Conocida de la Proporción", value = 0.5, min = 0, max = 1, step = 0.01)
+      ),
+      selectInput("estimation_precision", "Precisión de la Estimación",
+                  choices = list("Error de Muestreo" = "error_muestreo",
+                                 "Error Máximo Admisible con Coeficiente de Confianza Fijado" = "error_max_admisible")),
+      conditionalPanel(
+        condition = "input.estimation_precision == 'error_muestreo'",
+        numericInput("sampling_error", "Error de Muestreo", value = 0.05, min = 0, step = 0.01)
       ),
       conditionalPanel(
-        condition = "input.sampling_type == 'proporcion_poblacion_finita'",
-        numericInput("N", "Tamaño de la Población (N)", value = 1000),
-        numericInput("p", "Proporción (p)", value = 0.5, min = 0, max = 1, step = 0.01)
+        condition = "input.estimation_precision == 'error_max_admisible'",
+        numericInput("max_error", "Error Máximo Admisible", value = 0.05, min = 0, step = 0.01),
+        numericInput("confidence_level", "Nivel de Confianza", value = 0.95, min = 0, max = 1, step = 0.01)
       ),
-      conditionalPanel(
-        condition = "input.sampling_type == 'diferencia_medias'",
-        numericInput("sd1", "Desviación Estándar Población 1 (sd1)", value = 1),
-        numericInput("sd2", "Desviación Estándar Población 2 (sd2)", value = 1)
-      ),
-      numericInput("conf_level", "Nivel de Confianza (conf_level)", value = 0.95, step = 0.01),
-      numericInput("margin_error", "Margen de Error (margin_error)", value = 0.05, step = 0.01),
       actionButton("calculate", "Calcular")
     )
   ),

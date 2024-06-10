@@ -3,38 +3,49 @@
 server <- function(input, output, session) {
   result <- eventReactive(input$calculate, {
     validate(
-      need(input$sampling_type, "Selecciona un tipo de muestreo."),
-      need(input$conf_level > 0 & input$conf_level < 1, "El nivel de confianza debe estar entre 0 y 1."),
-      need(input$margin_error > 0, "El margen de error debe ser mayor que 0.")
+      need(input$sampling_method, "Selecciona un tipo de muestreo."),
+      need(input$parameter_of_interest, "Selecciona un parámetro de interés."),
+      need(input$estimation_precision, "Selecciona una precisión de la estimación.")
     )
     
-    if (input$sampling_type == "media") {
+    if (input$parameter_of_interest == "media") {
       validate(
-        need(input$sd > 0, "La desviación estándar debe ser mayor que 0.")
+        need(input$sd > 0, "La estimación de la dispersión (SD) debe ser mayor que 0.")
       )
-      n <- calcular_tamano_muestral_media(input$sd, input$conf_level, input$margin_error)
-      list(n = n, type = "media")
-    } else if (input$sampling_type == "proporcion_reposicion") {
+      if (input$estimation_precision == "error_muestreo") {
+        validate(
+          need(input$sampling_error > 0, "El error de muestreo debe ser mayor que 0.")
+        )
+        # Aquí iría la lógica para calcular el tamaño muestral basado en la media y el error de muestreo
+        n <- calcular_tamano_muestreo_media(input$sampling_method, input$estimation_precision, input$sd, input$sampling_error)
+      } else if (input$estimation_precision == "error_max_admisible") {
+        validate(
+          need(input$max_error > 0, "El error máximo admisible debe ser mayor que 0."),
+          need(input$confidence_level > 0 & input$confidence_level < 1, "El nivel de confianza debe estar entre 0 y 1.")
+        )
+        # Aquí iría la lógica para calcular el tamaño muestral basado en la media y el error máximo admisible
+        n <- calcular_tamano_muestreo_media(input$sampling_method, input$estimation_precision, input$sd, input$max_error, input$confidence_level)
+      }
+    } else if (input$parameter_of_interest == "proporcion") {
       validate(
-        need(input$p > 0 & input$p < 1, "La proporción debe estar entre 0 y 1.")
+        need(input$proportion_estimate >= 0 & input$proportion_estimate <= 1, "La estimación de la proporción debe estar entre 0 y 1.")
       )
-      n <- calcular_tamano_muestral_con_reposicion(input$p, input$conf_level, input$margin_error)
-      list(n = n, type = "proporcion_reposicion")
-    } else if (input$sampling_type == "proporcion_poblacion_finita") {
-      validate(
-        need(input$N > 0, "El tamaño de la población debe ser mayor que 0."),
-        need(input$p > 0 & input$p < 1, "La proporción debe estar entre 0 y 1.")
-      )
-      n <- calcular_tamano_muestral_sin_reposicion(input$N, input$p, input$conf_level, input$margin_error)
-      list(n = n, type = "proporcion_poblacion_finita")
-    } else if (input$sampling_type == "diferencia_medias") {
-      validate(
-        need(input$sd1 > 0, "La desviación estándar de la primera población debe ser mayor que 0."),
-        need(input$sd2 > 0, "La desviación estándar de la segunda población debe ser mayor que 0.")
-      )
-      n <- calcular_tamano_muestral_diferencia_medias(input$sd1, input$sd2, input$conf_level, input$margin_error)
-      list(n = n, type = "diferencia_medias")
+      if (input$estimation_precision == "error_muestreo") {
+        validate(
+          need(input$sampling_error > 0, "El error de muestreo debe ser mayor que 0.")
+        )
+        # Aquí iría la lógica para calcular el tamaño muestral basado en la proporción y el error de muestreo
+        n <- calcular_tamano_muestreo_proporcion(input$sampling_method, input$estimation_precision, input$proportion_estimate, input$sampling_error)
+      } else if (input$estimation_precision == "error_max_admisible") {
+        validate(
+          need(input$max_error > 0, "El error máximo admisible debe ser mayor que 0."),
+          need(input$confidence_level > 0 & input$confidence_level < 1, "El nivel de confianza debe estar entre 0 y 1.")
+        )
+        # Aquí iría la lógica para calcular el tamaño muestral basado en la proporción y el error máximo admisible
+        n <- calcular_tamano_muestreo_proporcion(input$sampling_method, input$estimation_precision, input$proportion_estimate, input$max_error, input$confidence_level)
+      }
     }
+    return(n)
   })
   
   output$show_result <- reactive({
@@ -46,15 +57,7 @@ server <- function(input, output, session) {
   output$result <- renderPrint({
     res <- result()
     if (!is.null(res)) {
-      if (res$type == "media") {
-        paste("El tamaño muestral requerido para estimar la media es:", res$n)
-      } else if (res$type == "proporcion_reposicion") {
-        paste("El tamaño muestral requerido para estimar la proporción (con reposición) es:", res$n)
-      } else if (res$type == "proporcion_poblacion_finita") {
-        paste("El tamaño muestral requerido para estimar la proporción (población finita) es:", res$n)
-      } else if (res$type == "diferencia_medias") {
-        paste("El tamaño muestral requerido para la diferencia entre dos medias es:", res$n)
-      }
+      paste("El tamaño muestral requerido es:", res)
     }
   })
 }
