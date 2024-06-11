@@ -8,23 +8,23 @@ server <- function(input, output, session) {
       need(input$estimation_precision, "Selecciona una precisión de la estimación.")
     )
     
+    N <- if (input$sampling_method == "MAS") input$population_size else NULL
+    
     if (input$parameter_of_interest == "media") {
       validate(
-        need(input$sd > 0, "La estimación de la dispersión (SD) debe ser mayor que 0.")
+        need(input$var > 0, "La varianza poblacional (Var) debe ser mayor que 0.")
       )
       if (input$estimation_precision == "error_muestreo") {
         validate(
           need(input$sampling_error > 0, "El error de muestreo debe ser mayor que 0.")
         )
-        # Aquí iría la lógica para calcular el tamaño muestral basado en la media y el error de muestreo
-        n <- calcular_tamano_muestreo_media(input$sampling_method, input$estimation_precision, input$sd, input$sampling_error)
+        n <- calcular_tamano_muestreo_media(input$sampling_method, N, input$var, input$sampling_error)
       } else if (input$estimation_precision == "error_max_admisible") {
         validate(
           need(input$max_error > 0, "El error máximo admisible debe ser mayor que 0."),
           need(input$confidence_level > 0 & input$confidence_level < 1, "El nivel de confianza debe estar entre 0 y 1.")
         )
-        # Aquí iría la lógica para calcular el tamaño muestral basado en la media y el error máximo admisible
-        n <- calcular_tamano_muestreo_media(input$sampling_method, input$estimation_precision, input$sd, input$max_error, input$confidence_level)
+        n <- calcular_tamano_muestreo_media(input$sampling_method, N, input$var, input$max_error, input$confidence_level, input$approx_normal, input$tchebychev_des)
       }
     } else if (input$parameter_of_interest == "proporcion") {
       validate(
@@ -34,15 +34,13 @@ server <- function(input, output, session) {
         validate(
           need(input$sampling_error > 0, "El error de muestreo debe ser mayor que 0.")
         )
-        # Aquí iría la lógica para calcular el tamaño muestral basado en la proporción y el error de muestreo
-        n <- calcular_tamano_muestreo_proporcion(input$sampling_method, input$estimation_precision, input$proportion_estimate, input$sampling_error)
+        n <- calcular_tamano_muestreo_proporcion(input$sampling_method, N, input$proportion_estimate, input$sampling_error)
       } else if (input$estimation_precision == "error_max_admisible") {
         validate(
           need(input$max_error > 0, "El error máximo admisible debe ser mayor que 0."),
           need(input$confidence_level > 0 & input$confidence_level < 1, "El nivel de confianza debe estar entre 0 y 1.")
         )
-        # Aquí iría la lógica para calcular el tamaño muestral basado en la proporción y el error máximo admisible
-        n <- calcular_tamano_muestreo_proporcion(input$sampling_method, input$estimation_precision, input$proportion_estimate, input$max_error, input$confidence_level)
+        n <- calcular_tamano_muestreo_proporcion(input$sampling_method, N, input$proportion_estimate, input$max_error, input$confidence_level, input$approx_normal, input$tchebychev_des)
       }
     }
     return(n)

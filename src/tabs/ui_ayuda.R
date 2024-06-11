@@ -1,75 +1,67 @@
 # ui_ayuda.R
 
-help_content <- HTML('
-  <h3>Ayuda: Tamaño Muestral</h3>
-  
-  <p>El tamaño muestral es el número de observaciones o replicaciones que se incluyen en un estudio. Es importante para asegurar que los resultados del estudio sean estadísticamente significativos y representativos de la población.</p>
-  
-  <h4>Tipos de Muestreo</h4>
-  <ul>
-    <li><b>Muestreo Aleatorio Simple (M.A.S)</b>: Cada miembro de la población tiene la misma probabilidad de ser seleccionado.</li>
-    <li><b>Muestreo Aleatorio con Reposición (M.A.C.R)</b>: Cada miembro de la población puede ser seleccionado más de una vez.</li>
-  </ul>
-  
-  <h4>Parámetros de Interés</h4>
-  <ul>
-    <li><b>Media Poblacional</b>: Estimación de la media de la población.</li>
-    <li><b>Proporción Poblacional</b>: Estimación de la proporción de la población que tiene una característica específica.</li>
-  </ul>
-  
-  <h4>Precisión de la Estimación</h4>
-  <ul>
-    <li><b>Error de Muestreo</b>: La diferencia máxima aceptable entre el valor estimado a partir de la muestra y el valor verdadero en la población.</li>
-    <li><b>Error Máximo Admisible con Coeficiente de Confianza Fijado</b>: El máximo error admisible dado un nivel de confianza específico.</li>
-  </ul>
-  
-  <h4>Fórmulas para Calcular el Tamaño Muestral</h4>
-  
-  <h5>Para la Media Poblacional</h5>
-  <p><b>Muestreo Aleatorio Simple (M.A.S)</b></p>
-  <p>Con error de muestreo:</p>
-  <p>\\( n = \\left( \\frac{Z \\cdot \\sigma}{E} \\right)^2 \\)</p>
-  <p>Con error máximo admisible:</p>
-  <p>\\( n = \\left( \\frac{Z \\cdot \\sigma}{E_{max}} \\right)^2 \\)</p>
-  
-  <p><b>Muestreo Aleatorio con Reposición (M.A.C.R)</b></p>
-  <p>Con error de muestreo:</p>
-  <p>\\( n = \\left( \\frac{Z \\cdot \\sigma}{E} \\right)^2 \\)</p>
-  <p>Con error máximo admisible:</p>
-  <p>\\( n = \\left( \\frac{Z \\cdot \\sigma}{E_{max}} \\right)^2 \\)</p>
-  
-  <h5>Para la Proporción Poblacional</h5>
-  <p><b>Muestreo Aleatorio Simple (M.A.S)</b></p>
-  <p>Con error de muestreo:</p>
-  <p>\\( n = \\frac{Z^2 \\cdot p \\cdot (1 - p)}{E^2} \\)</p>
-  <p>Con error máximo admisible:</p>
-  <p>\\( n = \\frac{Z^2 \\cdot p \\cdot (1 - p)}{E_{max}^2} \\)</p>
-  
-  <p><b>Muestreo Aleatorio con Reposición (M.A.C.R)</b></p>
-  <p>Con error de muestreo:</p>
-  <p>\\( n = \\frac{Z^2 \\cdot p \\cdot (1 - p)}{E^2} \\)</p>
-  <p>Con error máximo admisible:</p>
-  <p>\\( n = \\frac{Z^2 \\cdot p \\cdot (1 - p)}{E_{max}^2} \\)</p>
-  
-  <h4>Ejemplos de Uso</h4>
-  <p><b>Media Poblacional:</b> Si queremos estimar la media de una población con una desviación estándar de 10, un nivel de confianza del 95% y un error máximo admisible de 2, la fórmula sería:</p>
-  <p>\\( n = \\left( \\frac{1.96 \\cdot 10}{2} \\right)^2 = 96.04 \\)</p>
-  <p>Redondeando al siguiente número entero, necesitamos un tamaño muestral de 97.</p>
-  
-  <p><b>Proporción Poblacional:</b> Si queremos estimar la proporción de una característica con un nivel de confianza del 95%, una proporción esperada de 0.5 y un error máximo admisible de 0.05, la fórmula sería:</p>
-  <p>\\( n = \\frac{1.96^2 \\cdot 0.5 \\cdot (1 - 0.5)}{0.05^2} = 384.16 \\)</p>
-  <p>Redondeando al siguiente número entero, necesitamos un tamaño muestral de 385.</p>
-')
-
 ui_ayuda <- tabItem(
   tabName = "ayuda",
   fluidRow(
     box(
-      title = "Información sobre el Tamaño Muestral",
-      status = "info",
+      title = "Ayuda: Tamaño Muestral",
+      status = "primary",
       solidHeader = TRUE,
       width = 12,
-      withMathJax(help_content)
+      withMathJax(HTML('
+        <h3>Ayuda: Tamaño Muestral</h3>
+        
+        <p>El tamaño muestral es el número de observaciones o replicaciones que se incluyen en un estudio. Es importante para asegurar que los resultados del estudio sean estadísticamente significativos y representativos de la población.</p>
+        
+        <h4>Cálculo del Tamaño Muestral para Estimar una Media</h4>
+        <p>Para estimar una media poblacional, utilizamos las siguientes fórmulas:</p>
+        
+        <h5>Muestreo Aleatorio Simple (M.A.S) con Varianza Poblacional</h5>
+        <p>Para un error de muestreo específico:</p>
+        <p>$$n = \\frac{N \\cdot \\sigma^2}{N \\cdot E^2 + \\sigma^2}$$</p>
+        <p>Para un error máximo admisible con un nivel de confianza específico:</p>
+        <p>$$n = \\frac{N \\cdot Z^2 \\cdot \\sigma^2}{N \\cdot E^2 + Z^2 \\cdot \\sigma^2}$$</p>
+        
+        <h5>Muestreo Aleatorio con Reposición (M.A.C.R) con Varianza Poblacional</h5>
+        <p>Para un error de muestreo específico:</p>
+        <p>$$n = \\frac{\\sigma^2}{E^2}$$</p>
+        <p>Para un error máximo admisible con un nivel de confianza específico:</p>
+        <p>$$n = \\frac{Z^2 \\cdot \\sigma^2}{E^2}$$</p>
+        
+        <h4>Cálculo del Tamaño Muestral para Estimar una Proporción</h4>
+        <p>Para estimar una proporción poblacional, utilizamos las siguientes fórmulas:</p>
+        
+        <h5>Muestreo Aleatorio Simple (M.A.S) con Proporción Poblacional</h5>
+        <p>Para un error de muestreo específico:</p>
+        <p>$$n = \\frac{N \\cdot p \\cdot (1 - p)}{N \\cdot E^2 + p \\cdot (1 - p)}$$</p>
+        <p>Para un error máximo admisible con un nivel de confianza específico:</p>
+        <p>$$n = \\frac{N \\cdot Z^2 \\cdot p \\cdot (1 - p)}{N \\cdot E^2 + Z^2 \\cdot p \\cdot (1 - p)}$$</p>
+        
+        <h5>Muestreo Aleatorio con Reposición (M.A.C.R) con Proporción Poblacional</h5>
+        <p>Para un error de muestreo específico:</p>
+        <p>$$n = \\frac{p \\cdot (1 - p)}{E^2}$$</p>
+        <p>Para un error máximo admisible con un nivel de confianza específico:</p>
+        <p>$$n = \\frac{Z^2 \\cdot p \\cdot (1 - p)}{E^2}$$</p>
+        
+        <h4>Parámetros</h4>
+        <ul>
+          <li><b>N:</b> Tamaño de la población (solo para M.A.S).</li>
+          <li><b>\\(\\sigma^2\\):</b> Varianza poblacional.</li>
+          <li><b>p:</b> Proporción poblacional esperada.</li>
+          <li><b>E:</b> Error de muestreo.</li>
+          <li><b>Z:</b> Valor Z correspondiente al nivel de confianza deseado.</li>
+          <li><b>Aproximación Normal:</b> Utiliza la aproximación normal para el cálculo del tamaño muestral.</li>
+          <li><b>Error de Tchebychev:</b> Utiliza la desigualdad de Tchebychev para el cálculo del tamaño muestral.</li>
+        </ul>
+        
+        <h4>Casos de Uso</h4>
+        <p>La determinación del tamaño muestral es crucial en muchas áreas, incluyendo:</p>
+        <ul>
+          <li><b>Investigación Médica:</b> Para asegurar que los ensayos clínicos tengan suficiente poder estadístico para detectar diferencias significativas.</li>
+          <li><b>Encuestas de Opinión:</b> Para estimar la proporción de una población que tiene una opinión particular con un nivel de precisión deseado.</li>
+          <li><b>Control de Calidad:</b> Para determinar el tamaño de las muestras necesarias para verificar que un lote de productos cumple con los estándares de calidad.</li>
+        </ul>
+      '))
     )
   )
 )
