@@ -2,6 +2,7 @@
 
 ui_calculo <- tabItem(
   tabName = "calculo",
+  useShinyFeedback(),
   fluidRow(
     box(
       title = "Parámetros del Muestreo",
@@ -51,7 +52,7 @@ ui_calculo <- tabItem(
         status = "primary",
         solidHeader = TRUE,
         width = 12,
-        verbatimTextOutput("result")
+        uiOutput("result")
       )
     )
   )

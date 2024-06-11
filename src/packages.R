@@ -5,6 +5,7 @@ library(shiny)
 library(shinythemes)
 library(shinyjs)
 library(shinydashboard)
+library(shinyFeedback)
 
 # Cargar archivos de configuración
 source("formulas.R")
