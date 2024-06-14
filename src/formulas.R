@@ -1,7 +1,7 @@
 # formulas.R
 
 # Función para calcular el tamaño muestral para una media
-calcular_tamano_muestreo_media <- function(metodo, N, var, e, nivel_confianza = NULL, approx_normal = FALSE, tchebychev_des = FALSE) {
+calcular_tamano_muestreo_media <- function(metodo, N, var, e, nivel_confianza = NULL) {
   if (is.null(nivel_confianza)) {
     # Error de Muestreo
     n0<-var/e^2
@@ -14,13 +14,9 @@ calcular_tamano_muestreo_media <- function(metodo, N, var, e, nivel_confianza = 
   } else {
     # Error Máximo Admisible con Coeficiente de Confianza Fijado
     zalpha<-qnorm(1-nivel_confianza/2)
-    
-    if (approx_normal) {
+
       n01<-zalpha*var/e^2 #si se cumple la aproximacion normal (condicion n>=30)
-    }
-    if (tchebychev_des) {
       n02<-var/(nivel_confianza*e^2)  #si se aplica desigualdad de Tchebychev (no se necesita condicion)
-    }
     
     if (n01>=30){
       n0<-n01
@@ -46,7 +42,7 @@ calcular_tamano_muestreo_media <- function(metodo, N, var, e, nivel_confianza = 
 }
 
 # Función para calcular el tamaño muestral para una proporción
-calcular_tamano_muestreo_proporcion <- function(metodo, N, P, e, nivel_confianza = NULL, approx_normal = FALSE, tchebychev_des = FALSE) {
+calcular_tamano_muestreo_proporcion <- function(metodo, N, P, e, nivel_confianza = NULL) {
   if (is.null(nivel_confianza)) {
     # Error de Muestreo
     n0<-P*(1-P)/e^2
@@ -59,13 +55,9 @@ calcular_tamano_muestreo_proporcion <- function(metodo, N, P, e, nivel_confianza
   } else {
     # Error Máximo Admisible con Coeficiente de Confianza Fijado
     zalpha<-qnorm(1-nivel_confianza/2)
-    
-    if (approx_normal) {
+
       n01<-(zalpha^2*P*(1-P))/(e^2) #tamaño muestral m.a.c.r. y suponiendo normalidad
-    }
-    if (tchebychev_des) {
       n02<-P*(1-P)/(nivel_confianza*e^2) #tamaño muestral m.a.c.r. y con des. Tchebychev 
-    }
     
     if(n01>=30) {
       n0<-n01

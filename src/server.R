@@ -21,7 +21,7 @@ server <- function(input, output, session) {
     }
     
     if (input$parameter_of_interest == "media" && (is.null(input$var) || input$var <= 0)) {
-      showFeedbackDanger("var", "La varianza poblacional (Var) debe ser mayor que 0.")
+      showFeedbackDanger("var", "La varianza poblacional debe ser mayor que 0.")
       valid <- FALSE
     }
     
@@ -53,13 +53,13 @@ server <- function(input, output, session) {
         if (input$estimation_precision == "error_muestreo") {
           n <- calcular_tamano_muestreo_media(input$sampling_method, N, input$var, input$sampling_error)
         } else if (input$estimation_precision == "error_max_admisible") {
-          n <- calcular_tamano_muestreo_media(input$sampling_method, N, input$var, input$max_error, input$confidence_level, input$approx_normal, input$tchebychev_des)
+          n <- calcular_tamano_muestreo_media(input$sampling_method, N, input$var, input$max_error, input$confidence_level)
         }
       } else if (input$parameter_of_interest == "proporcion") {
         if (input$estimation_precision == "error_muestreo") {
           n <- calcular_tamano_muestreo_proporcion(input$sampling_method, N, input$proportion_estimate, input$sampling_error)
         } else if (input$estimation_precision == "error_max_admisible") {
-          n <- calcular_tamano_muestreo_proporcion(input$sampling_method, N, input$proportion_estimate, input$max_error, input$confidence_level, input$approx_normal, input$tchebychev_des)
+          n <- calcular_tamano_muestreo_proporcion(input$sampling_method, N, input$proportion_estimate, input$max_error, input$confidence_level)
         }
       }
       # Crear el texto de resumen elaborado
@@ -79,12 +79,6 @@ server <- function(input, output, session) {
         resumen <- paste0(resumen, "El error de muestreo especificado es de ", input$sampling_error, ".<br/>")
       } else {
         resumen <- paste0(resumen, "El error máximo admisible es de ", input$max_error, " con un nivel de confianza de ", input$confidence_level * 100, "%.<br/>")
-        if (input$approx_normal) {
-          resumen <- paste0(resumen, "Se ha utilizado la aproximación normal para el cálculo.<br/>")
-        }
-        if (input$tchebychev_des) {
-          resumen <- paste0(resumen, "Se ha aplicado la desigualdad de Tchebychev en el cálculo.<br/>")
-        }
       }
       resumen <- paste0(resumen, "<br/><b>El tamaño muestral requerido es: ", n, "</b>")
       
