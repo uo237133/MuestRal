@@ -1,8 +1,6 @@
 # src/tabs/ui_acerca_de.R
 
-ui_acerca_de <- tabItem(
-  tabName = "acerca_de",
-  fluidRow(
+ui_acerca_de <- fluidRow(
     box(
       title = "Acerca de",
       status = "primary",
@@ -18,4 +16,3 @@ ui_acerca_de <- tabItem(
       ')
     )
   )
-)

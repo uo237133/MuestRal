@@ -3,7 +3,7 @@
 source("packages.R")
 
 ui <- dashboardPage(
-  dashboardHeader(title = "RShinyMuestreo"),
+  dashboardHeader(disable = TRUE),
   dashboardSidebar(
     sidebarMenu(
       menuItem("Home", tabName = "home", icon = icon("home")),
@@ -14,10 +14,10 @@ ui <- dashboardPage(
   ),
   dashboardBody(
     tabItems(
-      ui_home,
-      ui_calculo,
-      ui_ayuda,
-      ui_acerca_de
+      tabItem(tabName = "home", ui_home),
+      tabItem(tabName = "calculo", ui_calculo),
+      tabItem(tabName = "ayuda", ui_ayuda),
+      tabItem(tabName = "acerca_de", ui_acerca_de)
     )
   )
 )

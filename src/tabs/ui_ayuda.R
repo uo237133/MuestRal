@@ -1,8 +1,6 @@
 # src/tabs/ui_ayuda.R
 
-ui_ayuda <- tabItem(
-  tabName = "ayuda",
-  fluidRow(
+ui_ayuda <- fluidRow(
     box(
       title = "Ayuda: Tamaño Muestral",
       status = "primary",
@@ -50,8 +48,6 @@ ui_ayuda <- tabItem(
           <li><b>p:</b> Proporción poblacional esperada.</li>
           <li><b>E:</b> Error de muestreo.</li>
           <li><b>Z:</b> Valor Z correspondiente al nivel de confianza deseado.</li>
-          <li><b>Aproximación Normal:</b> Utiliza la aproximación normal para el cálculo del tamaño muestral.</li>
-          <li><b>Error de Tchebychev:</b> Utiliza la desigualdad de Tchebychev para el cálculo del tamaño muestral.</li>
         </ul>
         
         <h4>Casos de Uso</h4>
@@ -64,4 +60,3 @@ ui_ayuda <- tabItem(
       '))
     )
   )
-)

@@ -1,8 +1,6 @@
 # src/tabs/ui_home.R
 
-ui_home <- tabItem(
-  tabName = "home",
-  fluidRow(
+ui_home <- fluidRow(
     box(
       title = "Bienvenido",
       status = "primary",
@@ -13,4 +11,3 @@ ui_home <- tabItem(
       p("Cálculo del Tamaño Muestral.")
     )
   )
-)

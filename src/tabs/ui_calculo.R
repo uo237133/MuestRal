@@ -1,7 +1,6 @@
 # src/tabs/ui_calculo.R
 
-ui_calculo <- tabItem(
-  tabName = "calculo",
+ui_calculo <- fluidPage(
   useShinyFeedback(),
   fluidRow(
     box(
