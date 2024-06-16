@@ -1,4 +1,4 @@
-# ui_calculo.R
+# src/tabs/ui_calculo.R
 
 ui_calculo <- tabItem(
   tabName = "calculo",

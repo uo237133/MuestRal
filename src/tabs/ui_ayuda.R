@@ -1,4 +1,4 @@
-# ui_ayuda.R
+# src/tabs/ui_ayuda.R
 
 ui_ayuda <- tabItem(
   tabName = "ayuda",

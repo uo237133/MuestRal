@@ -1,9 +1,7 @@
-# packages.R
+# src/packages.R
 
 # Cargar librerías
 library(shiny)
-library(shinythemes)
-library(shinyjs)
 library(shinydashboard)
 library(shinyFeedback)
 library(shinyBS)

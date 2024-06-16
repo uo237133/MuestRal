@@ -1,4 +1,4 @@
-# ui.R
+# src/ui.R
 
 source("packages.R")
 
@@ -13,7 +13,6 @@ ui <- dashboardPage(
     )
   ),
   dashboardBody(
-    useShinyjs(),
     tabItems(
       ui_home,
       ui_calculo,
