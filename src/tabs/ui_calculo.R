@@ -9,15 +9,20 @@ ui_calculo <- fluidPage(
       solidHeader = TRUE,
       width = 12,
       selectInput("sampling_method", "Tipo de Muestreo",
-                  choices = list("Muestreo Aleatorio Simple (M.A.S)" = "MAS",
+                  choices = list("Seleccione un tipo de muestreo" = "",
+                                 "Muestreo Aleatorio Simple (M.A.S)" = "MAS",
                                  "Muestreo Aleatorio con Reposición (M.A.C.R)" = "MACR")),
       conditionalPanel(
         condition = "input.sampling_method == 'MAS'",
         numericInput("population_size", "Tamaño de la Población", value = 1000, min = 1)
       ),
-      selectInput("parameter_of_interest", "Parámetro de Interés",
-                  choices = list("Media Poblacional" = "media",
-                                 "Proporción Poblacional" = "proporcion")),
+      conditionalPanel(
+        condition = "input.sampling_method != ''",
+        selectInput("parameter_of_interest", "Parámetro de Interés",
+                    choices = list("Seleccione un parametro de interés" = "",
+                                   "Media Poblacional" = "media",
+                                   "Proporción Poblacional" = "proporcion"))
+      ),
       conditionalPanel(
         condition = "input.parameter_of_interest == 'media'",
         numericInput("var", "Varianza Poblacional", value = 1, min = 0, step = 0.1)
@@ -26,9 +31,13 @@ ui_calculo <- fluidPage(
         condition = "input.parameter_of_interest == 'proporcion'",
         numericInput("proportion_estimate", "Estimación Conocida de la Proporción", value = 0.5, min = 0, max = 1, step = 0.01)
       ),
-      selectInput("estimation_precision", "Precisión de la Estimación",
-                  choices = list("Error de Muestreo" = "error_muestreo",
-                                 "Error Máximo Admisible con Coeficiente de Confianza Fijado" = "error_max_admisible")),
+      conditionalPanel(
+        condition = "input.parameter_of_interest != ''",
+        selectInput("estimation_precision", "Precisión de la Estimación",
+                    choices = list("Seleccione una opción de error" = "",
+                                   "Error de Muestreo" = "error_muestreo",
+                                   "Error Máximo Admisible con Coeficiente de Confianza Fijado" = "error_max_admisible"))
+      ),
       conditionalPanel(
         condition = "input.estimation_precision == 'error_muestreo'",
         numericInput("sampling_error", "Error de Muestreo", value = 0.05, min = 0, step = 0.01),

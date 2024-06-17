@@ -5,9 +5,12 @@ server <- function(input, output, session) {
   
   observeEvent(input$calculate, {
     # Resetear feedback
+    hideFeedback("sampling_method")
     hideFeedback("population_size")
+    hideFeedback("parameter_of_interest")
     hideFeedback("var")
     hideFeedback("proportion_estimate")
+    hideFeedback("estimation_precision")
     hideFeedback("sampling_error")
     hideFeedback("max_error")
     hideFeedback("confidence_level")
@@ -15,8 +18,18 @@ server <- function(input, output, session) {
     # Validaciones
     valid <- TRUE
     
+    if (is.null(input$sampling_method) || input$sampling_method == "") {
+      showFeedbackDanger("sampling_method", "Seleccione un tipo de muestreo.")
+      valid <- FALSE
+    }
+    
     if (input$sampling_method == "MAS" && (is.null(input$population_size) || input$population_size <= 0)) {
       showFeedbackDanger("population_size", "El tamaño de la población debe ser mayor que 0.")
+      valid <- FALSE
+    }
+    
+    if (is.null(input$parameter_of_interest) || input$parameter_of_interest == "") {
+      showFeedbackDanger("parameter_of_interest", "Seleccione un parámetro de interés.")
       valid <- FALSE
     }
     
@@ -27,6 +40,11 @@ server <- function(input, output, session) {
     
     if (input$parameter_of_interest == "proporcion" && (is.null(input$proportion_estimate) || input$proportion_estimate < 0 || input$proportion_estimate > 1)) {
       showFeedbackDanger("proportion_estimate", "La estimación de la proporción debe estar entre 0 y 1.")
+      valid <- FALSE
+    }
+    
+    if (is.null(input$estimation_precision) || input$estimation_precision == "") {
+      showFeedbackDanger("estimation_precision", "Seleccione una precisión de la estimación.")
       valid <- FALSE
     }
     
