@@ -48,7 +48,7 @@ Una vez instalados los paquetes necesarios, puedes ejecutar la aplicación desde
 ```r
 # Cargar y ejecutar la aplicación
 
-runApp("path/to/RShinyMuestreo")
+shiny::runApp("path/to/RShinyMuestreo")
 
 # Reemplaza "path/to/RShinyMuestreo" con la ruta al directorio donde clonaste el repositorio.
 ```
@@ -85,3 +85,59 @@ runApp("path/to/RShinyMuestreo")
 
 - **Estimación de una Media**: Supongamos que queremos estimar la media de una población con una varianza poblacional de 25, un nivel de confianza del 95% y un margen de error de 5. 
 - **Estimación de una Proporción**: Supongamos que queremos estimar la proporción de una población con una proporción esperada de 0.5, un nivel de confianza del 95% y un margen de error de 0.05.
+
+## Ayuda y Soporte
+
+Si necesitas ayuda o tienes preguntas sobre el uso de la aplicación, consulta la sección de ayuda integrada en la aplicación. Para acceder a la ayuda:
+
+1. Abre la aplicación RShinyMuestreo.
+2. Navega a la pestaña "Ayuda" en el menú de la izquierda.
+
+En esta sección encontrarás:
+
+- **Instrucciones de Uso**: Pasos detallados sobre cómo usar la aplicación.
+- **Cálculo del Tamaño Muestral**: Explicaciones y fórmulas utilizadas para calcular el tamaño muestral para medias y proporciones.
+- **Ejemplos de Cálculo**: Ejemplos detallados para entender mejor cómo funcionan los cálculos.
+- **Parámetros y Metodologías**: Descripción de los diferentes parámetros y metodologías disponibles en la aplicación.
+- **Casos de Uso**: Ejemplos de situaciones prácticas donde la determinación del tamaño muestral es crucial.
+
+Para más información o soporte adicional, puedes contactar al desarrollador:
+- Correo electrónico: [UO237133@uniovi.es](mailto:UO237133@uniovi.es)
+- Repositorio de GitHub: [https://github.com/uo237133/RShinyMuestreo](https://github.com/uo237133/RShinyMuestreo)
+
+## Contribuciones
+
+¡Las contribuciones son bienvenidas! Si deseas contribuir a este proyecto, sigue estos pasos:
+
+1. **Fork el Repositorio**: Haz clic en el botón "Fork" en la esquina superior derecha de la página del repositorio.
+2. **Clonar tu Fork**: Clona tu fork a tu máquina local.
+```sh
+git clone https://github.com/tu-usuario/RShinyMuestreo.git
+cd RShinyMuestreo
+```
+3. **Crear una Rama**: Crea una nueva rama para tu contribución.
+```sh
+git checkout -b feature/nueva-caracteristica
+```
+4. **Realizar Cambios**: Realiza los cambios necesarios en el código.
+5. **Commit tus Cambios**: Commit tus cambios con un mensaje descriptivo.
+```sh
+git commit -m "Añadir nueva característica"
+```
+6. **Push a tu Fork**: Push tus cambios a tu fork en GitHub.
+```sh
+git push origin feature/nueva-caracteristica
+```
+7. **Abrir un Pull Request**: Abre un Pull Request en el repositorio original y describe los cambios que has realizado.
+
+## Licencia
+
+Este proyecto está licenciado bajo la Licencia MIT. Para más detalles, consulta el archivo [LICENSE](LICENSE) en el repositorio.
+
+## Agradecimientos
+
+Este proyecto fue desarrollado en colaboración con la Universidad de Oviedo y la Escuela de Ingeniería Informática de Oviedo.
+
+![Universidad de Oviedo](img/universidad_oviedo.png)
+![Escuela de Ingeniería Informática de Oviedo](img/ingenieria_informatica_oviedo.png)
+
