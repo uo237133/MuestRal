@@ -47,7 +47,7 @@ calcular_tamano_muestral_media <- function(metodo, N, var, e, nivel_confianza = 
   return(salida)
 }
 
-# Función para calcular el tamaño muestral para una proporción
+# Función para calcular el tamaño muestral para una PROPORCION
 calcular_tamano_muestral_proporcion <- function(metodo, N, P, e, nivel_confianza = NULL) {
   if (is.null(nivel_confianza)) {
     # ERROR DE MUESTREO
