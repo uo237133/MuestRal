@@ -2,6 +2,97 @@
 
 server <- function(input, output, session) {
   result <- reactiveVal(NULL)
+
+  # Observa cambios en los inputs y muestra feedback en tiempo real
+  observe({
+    if (is.null(input$sampling_method)) {
+      showFeedbackDanger("sampling_method", "Seleccione un tipo de muestreo.")
+    } else {
+      hideFeedback("sampling_method")
+    }
+  })
+  
+  observe({
+    if (input$sampling_method == "MAS") {
+      if (is.na(input$population_size) || input$population_size <= 0) {
+        showFeedbackDanger("population_size", "El tamaño de la población debe ser mayor que 0.")
+      } else {
+        hideFeedback("population_size")
+      }
+    } else {
+      hideFeedback("population_size")
+    }
+  })
+  
+  observe({
+    if (is.null(input$parameter_of_interest)) {
+      showFeedbackDanger("parameter_of_interest", "Seleccione un parámetro de interés.")
+    } else {
+      hideFeedback("parameter_of_interest")
+    }
+  })
+  
+  observe({
+    if (input$parameter_of_interest == "media") {
+      if (is.na(input$var) || input$var <= 0) {
+        showFeedbackDanger("var", "La varianza poblacional debe ser mayor que 0.")
+      } else {
+        hideFeedback("var")
+      }
+    } else {
+      hideFeedback("var")
+    }
+  })
+  
+  observe({
+    if (input$parameter_of_interest == "proporcion") {
+      if (is.na(input$proportion_estimate) || input$proportion_estimate < 0 || input$proportion_estimate > 1) {
+        showFeedbackDanger("proportion_estimate", "La estimación de la proporción debe estar entre 0 y 1.")
+      } else {
+        hideFeedback("proportion_estimate")
+      }
+    } else {
+      hideFeedback("proportion_estimate")
+    }
+  })
+  
+  observe({
+    if (is.null(input$estimation_precision)) {
+      showFeedbackDanger("estimation_precision", "Seleccione una precisión de la estimación.")
+    } else {
+      hideFeedback("estimation_precision")
+    }
+  })
+  
+  observe({
+    if (input$estimation_precision == "error_muestreo") {
+      if (is.na(input$sampling_error) || input$sampling_error <= 0) {
+        showFeedbackDanger("sampling_error", "El error de muestreo debe ser mayor que 0.")
+      } else {
+        hideFeedback("sampling_error")
+      }
+    } else {
+      hideFeedback("sampling_error")
+    }
+  })
+  
+  observe({
+    if (input$estimation_precision == "error_max_admisible") {
+      if (is.na(input$max_error) || input$max_error <= 0) {
+        showFeedbackDanger("max_error", "El error máximo admisible debe ser mayor que 0.")
+      } else {
+        hideFeedback("max_error")
+      }
+      if (is.na(input$confidence_level) || input$confidence_level <= 0 || input$confidence_level >= 1) {
+        showFeedbackDanger("confidence_level", "El nivel de confianza debe estar entre 0 y 1.")
+      } else {
+        hideFeedback("confidence_level")
+      }
+    } else {
+      hideFeedback("max_error")
+      hideFeedback("confidence_level")
+    }
+  })
   
   observeEvent(input$calculate, {
     # Resetear feedback
@@ -23,7 +114,7 @@ server <- function(input, output, session) {
       valid <- FALSE
     }
     
-    if (input$sampling_method == "MAS" && (is.null(input$population_size) || input$population_size <= 0)) {
+    if (input$sampling_method == "MAS" && (is.na(input$population_size) || input$population_size <= 0)) {
       showFeedbackDanger("population_size", "El tamaño de la población debe ser mayor que 0.")
       valid <- FALSE
     }
@@ -33,32 +124,32 @@ server <- function(input, output, session) {
       valid <- FALSE
     }
     
-    if (input$parameter_of_interest == "media" && (is.null(input$var) || input$var <= 0)) {
+    if (input$parameter_of_interest == "media" && (is.na(input$var) || input$var <= 0)) {
       showFeedbackDanger("var", "La varianza poblacional debe ser mayor que 0.")
       valid <- FALSE
     }
     
-    if (input$parameter_of_interest == "proporcion" && (is.null(input$proportion_estimate) || input$proportion_estimate < 0 || input$proportion_estimate > 1)) {
+    if (input$parameter_of_interest == "proporcion" && (is.na(input$proportion_estimate) || input$proportion_estimate < 0 || input$proportion_estimate > 1)) {
       showFeedbackDanger("proportion_estimate", "La estimación de la proporción debe estar entre 0 y 1.")
       valid <- FALSE
     }
     
-    if (is.null(input$estimation_precision) || input$estimation_precision == "") {
+    if (is.na(input$estimation_precision) || input$estimation_precision == "") {
       showFeedbackDanger("estimation_precision", "Seleccione una precisión de la estimación.")
       valid <- FALSE
     }
     
-    if (input$estimation_precision == "error_muestreo" && (is.null(input$sampling_error) || input$sampling_error <= 0)) {
+    if (input$estimation_precision == "error_muestreo" && (is.na(input$sampling_error) || input$sampling_error <= 0)) {
       showFeedbackDanger("sampling_error", "El error de muestreo debe ser mayor que 0.")
       valid <- FALSE
     }
     
     if (input$estimation_precision == "error_max_admisible") {
-      if (is.null(input$max_error) || input$max_error <= 0) {
+      if (is.na(input$max_error) || input$max_error <= 0) {
         showFeedbackDanger("max_error", "El error máximo admisible debe ser mayor que 0.")
         valid <- FALSE
       }
-      if (is.null(input$confidence_level) || input$confidence_level <= 0 || input$confidence_level >= 1) {
+      if (is.na(input$confidence_level) || input$confidence_level <= 0 || input$confidence_level >= 1) {
         showFeedbackDanger("confidence_level", "El nivel de confianza debe estar entre 0 y 1.")
         valid <- FALSE
       }
