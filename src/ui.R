@@ -3,7 +3,7 @@
 source("packages.R")
 
 ui <- dashboardPage(
-  dashboardHeader(disable = TRUE),
+  dashboardHeader(title = "RShinyMuestreo"),
   dashboardSidebar(
     sidebarMenu(
       menuItem("Home", tabName = "home", icon = icon("home")),
