@@ -134,7 +134,7 @@ server <- function(input, output, session) {
       valid <- FALSE
     }
     
-    if (is.na(input$estimation_precision) || input$estimation_precision == "") {
+    if (is.null(input$estimation_precision) || input$estimation_precision == "") {
       showFeedbackDanger("estimation_precision", "Seleccione una precisión de la estimación.")
       valid <- FALSE
     }
@@ -160,15 +160,15 @@ server <- function(input, output, session) {
       
       if (input$parameter_of_interest == "media") {
         if (input$estimation_precision == "error_muestreo") {
-          n <- calcular_tamano_muestreo_media(input$sampling_method, N, input$var, input$sampling_error)
+          n <- calcular_tamano_muestral_media(input$sampling_method, N, input$var, input$sampling_error)
         } else if (input$estimation_precision == "error_max_admisible") {
-          n <- calcular_tamano_muestreo_media(input$sampling_method, N, input$var, input$max_error, input$confidence_level)
+          n <- calcular_tamano_muestral_media(input$sampling_method, N, input$var, input$max_error, input$confidence_level)
         }
       } else if (input$parameter_of_interest == "proporcion") {
         if (input$estimation_precision == "error_muestreo") {
-          n <- calcular_tamano_muestreo_proporcion(input$sampling_method, N, input$proportion_estimate, input$sampling_error)
+          n <- calcular_tamano_muestral_proporcion(input$sampling_method, N, input$proportion_estimate, input$sampling_error)
         } else if (input$estimation_precision == "error_max_admisible") {
-          n <- calcular_tamano_muestreo_proporcion(input$sampling_method, N, input$proportion_estimate, input$max_error, input$confidence_level)
+          n <- calcular_tamano_muestral_proporcion(input$sampling_method, N, input$proportion_estimate, input$max_error, input$confidence_level)
         }
       }
       # Crear el texto de resumen elaborado

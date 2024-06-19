@@ -26,6 +26,14 @@ ui_ayuda <- fluidRow(
         <p>Para un error máximo admisible con un nivel de confianza específico:</p>
         <p>$$n = \\frac{Z^2 \\cdot \\sigma^2}{E^2}$$</p>
         
+        <h5>Ejemplo de Cálculo para una Media</h5>
+        <p>Supongamos que queremos estimar la media de una población con una varianza poblacional de 25, un nivel de confianza del 95% y un margen de error de 5. Usando la fórmula para el error máximo admisible con un nivel de confianza específico en un muestreo aleatorio simple (M.A.S), el cálculo sería:</p>
+        <p>$$n = \\frac{1000 \\cdot 1.96^2 \\cdot 25}{1000 \\cdot 5^2 + 1.96^2 \\cdot 25} = 24.04$$</p>
+        <p>Redondeando al siguiente número entero, necesitamos un tamaño muestral de 25.</p>
+        <p>Si la población es infinita, usamos la fórmula para M.A.C.R:</p>
+        <p>$$n = \\frac{1.96^2 \\cdot 25}{5^2} = 96.04$$</p>
+        <p>Redondeando al siguiente número entero, necesitamos un tamaño muestral de 97.</p>
+        
         <h4>Cálculo del Tamaño Muestral para Estimar una Proporción</h4>
         <p>Para estimar una proporción poblacional, utilizamos las siguientes fórmulas:</p>
         
@@ -41,6 +49,14 @@ ui_ayuda <- fluidRow(
         <p>Para un error máximo admisible con un nivel de confianza específico:</p>
         <p>$$n = \\frac{Z^2 \\cdot p \\cdot (1 - p)}{E^2}$$</p>
         
+        <h5>Ejemplo de Cálculo para una Proporción</h5>
+        <p>Supongamos que queremos estimar la proporción de una población con una proporción esperada de 0.5, un nivel de confianza del 95% y un margen de error de 0.05. Usando la fórmula para el error máximo admisible con un nivel de confianza específico en un muestreo aleatorio simple (M.A.S) y una población de 1000, el cálculo sería:</p>
+        <p>$$n = \\frac{1000 \\cdot 1.96^2 \\cdot 0.5 \\cdot (1 - 0.5)}{1000 \\cdot 0.05^2 + 1.96^2 \\cdot 0.5 \\cdot (1 - 0.5)} = 278.69$$</p>
+        <p>Redondeando al siguiente número entero, necesitamos un tamaño muestral de 279.</p>
+        <p>Si la población es infinita, usamos la fórmula para M.A.C.R:</p>
+        <p>$$n = \\frac{1.96^2 \\cdot 0.5 \\cdot (1 - 0.5)}{0.05^2} = 384.16$$</p>
+        <p>Redondeando al siguiente número entero, necesitamos un tamaño muestral de 385.</p>
+        
         <h4>Parámetros</h4>
         <ul>
           <li><b>N:</b> Tamaño de la población (solo para M.A.S).</li>
@@ -48,6 +64,13 @@ ui_ayuda <- fluidRow(
           <li><b>p:</b> Proporción poblacional esperada.</li>
           <li><b>E:</b> Error de muestreo.</li>
           <li><b>Z:</b> Valor Z correspondiente al nivel de confianza deseado.</li>
+        </ul>
+        
+        <h4>Metodologías</h4>
+        <p>Existen dos metodologías principales para calcular el tamaño muestral: la aproximación normal y la desigualdad de Tchebychev.</p>
+        <ul>
+          <li><b>Aproximación Normal:</b> Esta metodología se utiliza cuando el tamaño muestral es grande (n >= 30). Se basa en la suposición de que la distribución de la muestra es normal.</li>
+          <li><b>Desigualdad de Tchebychev:</b> Esta metodología se utiliza cuando el tamaño muestral es pequeño o la distribución de la muestra no es normal. No requiere que la distribución de la muestra sea normal y es aplicable para cualquier distribución.</li>
         </ul>
         
         <h4>Casos de Uso</h4>
