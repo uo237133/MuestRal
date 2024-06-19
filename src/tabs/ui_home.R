@@ -22,8 +22,15 @@ ui_home <- fluidRow(
           tags$p("Licencia: Esta aplicación se distribuye bajo la licencia MIT."),
           tags$hr(),
           tags$h2("Contacto"),
-          tags$p("Para más información o soporte, puede contactar al desarrollador a través de [UO237133@uniovi.es]."),
-          tags$p("Repositorio de GitHub: [https://github.com/uo237133/RShinyMuestreo](https://github.com/uo237133/RShinyMuestreo)"),
+          tags$p(
+            "Para más información o soporte, puede contactar al desarrollador a través de ",
+            tags$a(href = "mailto:UO237133@uniovi.es", "UO237133@uniovi.es"),
+            "."
+          ),
+          tags$p(
+            "Repositorio de GitHub: ",
+            tags$a(href = "https://github.com/uo237133/RShinyMuestreo", "https://github.com/uo237133/RShinyMuestreo")
+          ),
           tags$hr(),
           tags$h2("Agradecimientos"),
           tags$p("Este proyecto fue desarrollado en colaboración con la Universidad de Oviedo y la Escuela de Ingeniería Informática de Oviedo."),
