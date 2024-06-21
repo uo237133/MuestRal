@@ -1,6 +1,6 @@
-# RShinyMuestreo
+# MuestRal
 
-RShinyMuestreo es una aplicación Shiny diseñada para calcular tamaños muestrales de manera eficiente y precisa.  
+MuestRal es una aplicación Shiny diseñada para calcular tamaños muestrales de manera eficiente y precisa.  
 Esta herramienta es ideal para investigadores, estadísticos y cualquier persona interesada en calcular tamaños muestrales para estudios de investigación.  
 Permite calcular el tamaño muestral necesario para estimar medias y proporciones poblacionales utilizando diferentes metodologías y parámetros.
 
@@ -29,8 +29,8 @@ Permite calcular el tamaño muestral necesario para estimar medias y proporcione
 Primero, clona el repositorio en tu máquina local:
 
 ```sh
-git clone https://github.com/uo237133/RShinyMuestreo.git
-cd RShinyMuestreo
+git clone https://github.com/uo237133/MuestRal.git
+cd MuestRal
 ```
 
 ### Instalar los Paquetes Necesarios
@@ -48,9 +48,9 @@ Una vez instalados los paquetes necesarios, puedes ejecutar la aplicación desde
 ```r
 # Cargar y ejecutar la aplicación
 
-shiny::runApp("path/to/RShinyMuestreo")
+shiny::runApp("path/to/MuestRal")
 
-# Reemplaza "path/to/RShinyMuestreo" con la ruta al directorio donde clonaste el repositorio.
+# Reemplaza "path/to/MuestRal" con la ruta al directorio donde clonaste el repositorio.
 ```
 
 ## Uso de la Aplicación
@@ -90,7 +90,7 @@ shiny::runApp("path/to/RShinyMuestreo")
 
 Si necesitas ayuda o tienes preguntas sobre el uso de la aplicación, consulta la sección de ayuda integrada en la aplicación. Para acceder a la ayuda:
 
-1. Abre la aplicación RShinyMuestreo.
+1. Abre la aplicación MuestRal.
 2. Navega a la pestaña "Ayuda" en el menú de la izquierda.
 
 En esta sección encontrarás:
@@ -103,7 +103,7 @@ En esta sección encontrarás:
 
 Para más información o soporte adicional, puedes contactar al desarrollador:
 - Correo electrónico: [UO237133@uniovi.es](mailto:UO237133@uniovi.es)
-- Repositorio de GitHub: [https://github.com/uo237133/RShinyMuestreo](https://github.com/uo237133/RShinyMuestreo)
+- Repositorio de GitHub: [https://github.com/uo237133/MuestRal](https://github.com/uo237133/MuestRal)
 
 ## Contribuciones
 
@@ -112,8 +112,8 @@ Para más información o soporte adicional, puedes contactar al desarrollador:
 1. **Fork el Repositorio**: Haz clic en el botón "Fork" en la esquina superior derecha de la página del repositorio.
 2. **Clonar tu Fork**: Clona tu fork a tu máquina local.
 ```sh
-git clone https://github.com/tu-usuario/RShinyMuestreo.git
-cd RShinyMuestreo
+git clone https://github.com/tu-usuario/MuestRal.git
+cd MuestRal
 ```
 3. **Crear una Rama**: Crea una nueva rama para tu contribución.
 ```sh

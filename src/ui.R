@@ -3,17 +3,17 @@
 source("packages.R")
 
 ui <- dashboardPage(
-  dashboardHeader(title = "RShinyMuestreo"),
+  dashboardHeader(title = "MuestRal"),
   dashboardSidebar(
     sidebarMenu(
-      menuItem("Home", tabName = "home", icon = icon("home")),
+      menuItem("Inicio", tabName = "inicio", icon = icon("home")),
       menuItem("Cálculo", tabName = "calculo", icon = icon("calculator")),
       menuItem("Ayuda", tabName = "ayuda", icon = icon("info-circle"))
     )
   ),
   dashboardBody(
     tabItems(
-      tabItem(tabName = "home", ui_home),
+      tabItem(tabName = "inicio", ui_inicio),
       tabItem(tabName = "calculo", ui_calculo),
       tabItem(tabName = "ayuda", ui_ayuda)
     )

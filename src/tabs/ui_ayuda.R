@@ -2,7 +2,7 @@
 
 ui_ayuda <- fluidRow(
     box(
-      title = "Ayuda: Tamaño Muestral",
+      title = "Ayuda",
       status = "primary",
       solidHeader = TRUE,
       width = 12,
@@ -71,21 +71,6 @@ ui_ayuda <- fluidRow(
           <li><b>p:</b> Proporción poblacional esperada.</li>
           <li><b>E:</b> Error de muestreo.</li>
           <li><b>Z:</b> Valor Z correspondiente al nivel de confianza deseado.</li>
-        </ul>
-        
-        <h3>Metodologías</h3>
-        <p>Existen dos metodologías principales para calcular el tamaño muestral: la aproximación normal y la desigualdad de Tchebychev.</p>
-        <ul>
-          <li><b>Aproximación Normal:</b> Esta metodología se utiliza cuando el tamaño muestral es grande (n >= 30). Se basa en la suposición de que la distribución de la muestra es normal.</li>
-          <li><b>Desigualdad de Tchebychev:</b> Esta metodología se utiliza cuando el tamaño muestral es pequeño o la distribución de la muestra no es normal. No requiere que la distribución de la muestra sea normal y es aplicable para cualquier distribución.</li>
-        </ul>
-        <hr/>
-        <h3>Casos de Uso</h3>
-        <p>La determinación del tamaño muestral es crucial en muchas áreas, incluyendo:</p>
-        <ul>
-          <li><b>Investigación Médica:</b> Para asegurar que los ensayos clínicos tengan suficiente poder estadístico para detectar diferencias significativas.</li>
-          <li><b>Encuestas de Opinión:</b> Para estimar la proporción de una población que tiene una opinión particular con un nivel de precisión deseado.</li>
-          <li><b>Control de Calidad:</b> Para determinar el tamaño de las muestras necesarias para verificar que un lote de productos cumple con los estándares de calidad.</li>
         </ul>'))
     )
   )

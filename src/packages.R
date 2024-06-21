@@ -13,6 +13,6 @@ source("formulas.R")
 addResourcePath("img", "../img")
 
 # Cargar archivos UI
-source("tabs/ui_home.R")
+source("tabs/ui_inicio.R")
 source("tabs/ui_calculo.R")
 source("tabs/ui_ayuda.R")
