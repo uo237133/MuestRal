@@ -29,7 +29,9 @@ ui_inicio <- fluidRow(column(
       tags$p("Licencia: Esta aplicación se distribuye bajo la licencia MIT."),
       tags$hr(),
       tags$h2("Contacto"),
-      tags$p("Para más información o soporte, puede contactar al desarrollador:"),
+      tags$p(
+        "Para más información o soporte, puede contactar al desarrollador:"
+      ),
       tags$p(
         "Correo electrónico: ",
         tags$a(href = "mailto:UO237133@uniovi.es", "UO237133@uniovi.es")
@@ -55,6 +57,18 @@ ui_inicio <- fluidRow(column(
           height = "150px",
           style = "margin: 10px;"
         )
+      ),
+      tags$hr(),
+      tags$h2("Referencias"),
+      tags$p("Lohr, S. L. (2010). Sampling: Design and Analysis (2nd ed.)."),
+      tags$p(
+        "Pérez López, C. (2005). Muestreo estadístico: conceptos y problemas resueltos."
+      ),
+      tags$p(
+        tags$a(href = "https://shiny.rstudio.com/articles/", "Shiny Documentation - RStudio")
+      ),
+      tags$p(
+        tags$a(href = "https://cran.r-project.org/manuals.html", "R Project Documentation")
       )
     )
   )
