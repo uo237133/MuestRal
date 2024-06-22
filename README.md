@@ -98,8 +98,6 @@ En esta sección encontrarás:
 - **Instrucciones de Uso**: Pasos detallados sobre cómo usar la aplicación.
 - **Cálculo del Tamaño Muestral**: Explicaciones y fórmulas utilizadas para calcular el tamaño muestral para medias y proporciones.
 - **Ejemplos de Cálculo**: Ejemplos detallados para entender mejor cómo funcionan los cálculos.
-- **Parámetros y Metodologías**: Descripción de los diferentes parámetros y metodologías disponibles en la aplicación.
-- **Casos de Uso**: Ejemplos de situaciones prácticas donde la determinación del tamaño muestral es crucial.
 
 Para más información o soporte adicional, puedes contactar al desarrollador:
 - Correo electrónico: [UO237133@uniovi.es](mailto:UO237133@uniovi.es)

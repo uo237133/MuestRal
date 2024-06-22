@@ -31,7 +31,7 @@ ui_calculo <- fluidPage(
                                  "Media Poblacional" = "media",
                                  "Proporción Poblacional" = "proporcion")
       ),
-
+      
       conditionalPanel(
         condition = "input.parameter_of_interest == 'media'",
         numericInput("var", 
@@ -47,7 +47,7 @@ ui_calculo <- fluidPage(
                                        tags$i(id = "proportion_estimate_help", class = "fas fa-question-circle")),
                      value = 0.5, min = 0, max = 1, step = 0.01)
       ),
-
+      
       selectInput("estimation_precision", 
                   label = tags$span("Precisión de la Estimación", 
                                     tags$i(id = "estimation_precision_help", class = "fas fa-question-circle")),
@@ -77,15 +77,15 @@ ui_calculo <- fluidPage(
       ),
       
       # Tooltips
-      bsTooltip("sampling_method_help", "Seleccione el tipo de muestreo a utilizar.", "right", options = list(container = "body")),
-      bsTooltip("population_size_help", "Ingrese el tamaño total de la población.", "right", options = list(container = "body")),
-      bsTooltip("parameter_of_interest_help", "Seleccione el parámetro de interés.", "right", options = list(container = "body")),
-      bsTooltip("var_help", "Ingrese la varianza poblacional estimada.", "right", options = list(container = "body")),
-      bsTooltip("proportion_estimate_help", "Ingrese la estimación conocida de la proporción poblacional.", "right", options = list(container = "body")),
-      bsTooltip("estimation_precision_help", "Seleccione el tipo de precisión para la estimación.", "right", options = list(container = "body")),
-      bsTooltip("sampling_error_help", "Ingrese el error de muestreo permitido.", "right", options = list(container = "body")),
-      bsTooltip("max_error_help", "Ingrese el error máximo admisible.", "right", options = list(container = "body")),
-      bsTooltip("confidence_level_help", "Ingrese el nivel de confianza deseado.", "right", options = list(container = "body")),
+      bsTooltip("sampling_method_help", "El tipo de muestreo define la forma en que los individuos son seleccionados para la muestra. El muestreo aleatorio simple (M.A.S) selecciona individuos sin reposición, mientras que el muestreo aleatorio con reposición (M.A.C.R) permite que un individuo pueda ser seleccionado más de una vez.", "right", options = list(container = "body")),
+      bsTooltip("population_size_help", "El tamaño de la población es el número total de individuos en la población de estudio. Debe ser un número mayor que 0.", "right", options = list(container = "body")),
+      bsTooltip("parameter_of_interest_help", "El parámetro de interés es la característica de la población que se desea estimar a partir de la muestra. Puede ser la media poblacional, que es el promedio de los valores, o la proporción poblacional, que es la fracción de individuos con una característica específica.", "right", options = list(container = "body")),
+      bsTooltip("var_help", "La varianza es una medida de dispersión que representa la variabilidad de una serie de datos con respecto a su media. Debe ser un número mayor que 0.", "right", options = list(container = "body")),
+      bsTooltip("proportion_estimate_help", "La proporción es la fracción de individuos en la población que tienen una característica específica. Debe estar entre 0 y 1.", "right", options = list(container = "body")),
+      bsTooltip("estimation_precision_help", "La precisión de la estimación determina el grado de exactitud deseado en el resultado. Puede ser definida mediante el error de muestreo, que es la diferencia tolerada entre el valor estimado y el verdadero valor poblacional, o mediante el error máximo admisible con un nivel de confianza específico, que establece el rango dentro del cual se espera que caiga el verdadero valor poblacional con una cierta probabilidad.", "right", options = list(container = "body")),
+      bsTooltip("sampling_error_help", "El error de muestreo es la diferencia entre el valor estimado a partir de la muestra y el valor real de la población. Debe ser un número mayor que 0.", "right", options = list(container = "body")),
+      bsTooltip("max_error_help", "El error máximo admisible es el mayor margen de error que se puede tolerar para los resultados de la muestra. Debe ser un número mayor que 0.", "right", options = list(container = "body")),
+      bsTooltip("confidence_level_help", "El nivel de confianza es la probabilidad de que el intervalo de confianza contenga el valor verdadero del parámetro de población. Debe estar entre 0 y 1.", "right", options = list(container = "body")),
       
       actionButton("calculate", "Calcular", style = "float: right;")
     )
