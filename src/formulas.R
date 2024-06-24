@@ -7,7 +7,7 @@ calcular_tamano_muestral_media <-
       # ERROR DE MUESTREO
       n0 <- var / e ^ 2
       
-      if (metodo == "MAS" && !is.null(N)) {
+      if (metodo == "MAS" & !is.null(N)) {
         n <- n0 / (1 + (n0 / N))
         #tamaño muestral m.a.s. y error muestreo
         salida <- n
@@ -31,7 +31,7 @@ calcular_tamano_muestral_media <-
         n0 <- min(30, n02)
       }
       
-      if (metodo == "MAS" && !is.null(N)) {
+      if (metodo == "MAS" & !is.null(N)) {
         #tamaño muestral m.a.s. y suponiendo normalidad
         n1 <- n01 / (1 + (n01 / N))
         #tamaño muestral m.a.s. y con des. Tchebychev
@@ -57,7 +57,7 @@ calcular_tamano_muestral_proporcion <-
       # ERROR DE MUESTREO
       n0 <- P * (1 - P) / e ^ 2
       
-      if (metodo == "MAS" && !is.null(N)) {
+      if (metodo == "MAS" & !is.null(N)) {
         n <- n0 / (1 + ((n0 - 1) / N))
         #tamaño muestral m.a.s. y error muestreo
         salida <- n
@@ -81,13 +81,13 @@ calcular_tamano_muestral_proporcion <-
         n0 <- min(30, n02)
       }
       
-      if (metodo == "MAS" && !is.null(N)) {
+      if (metodo == "MAS" & !is.null(N)) {
         #tamaño muestral m.a.s. y suponiendo normalidad
         n1 <- n01 / (1 + ((n01 - 1) / N))
         #tamaño muestral m.a.s. y con des. Tchebychev
         n2 <- n02 / (1 + ((n02 - 1) / N))
         
-        if (N >= 60 && n2 / N <= 0.1) {
+        if (N >= 60 & n2 / N <= 0.1) {
           salida <- n1
         }
         else {

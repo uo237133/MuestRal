@@ -10,12 +10,36 @@ ui_ayuda <- fluidRow(box(
       '<h3>Cómo Usar la Aplicación</h3>
         <p>Para usar esta aplicación, simplemente siga los siguientes pasos:</p>
         <ol>
-          <li>Seleccione el tipo de muestreo.</li>
-          <li>Seleccione el parámetro de interés (media o proporción).</li>
-          <li>Ingrese los valores de los parámetros necesarios, como la varianza poblacional o la estimación de la proporción.</li>
-          <li>Seleccione la precisión de la estimación (error de muestreo o error máximo admisible con coeficiente de confianza fijado).</li>
-          <li>Ingrese los valores adicionales necesarios, como el tamaño de la población, el nivel de confianza y el margen de error.</li>
+          <li>Seleccione el Tipo de Muestreo:</li>
+          <ul>
+          <li>Muestreo Aleatorio Simple (M.A.S)</li>
+          <li>Muestreo Aleatorio con Reposición (M.A.C.R)</li>
+          </ul>
+          <li>Seleccione el Parámetro de Interés:</li>
+          <ul>
+          <li>Media Poblacional</li>
+          <li>Proporción Poblacional</li>
+          </ul>
+          <li>Ingrese los Valores de los Parámetros Necesarios:</li>
+          <ul>
+          <li>Varianza Poblacional (para medias)</li>
+          <li>Estimación Conocida de la Proporción (para proporciones)</li>
+          </ul>
+          <li>Seleccione la Precisión de la Estimación:</li>
+          <ul>
+          <li>Error de Muestreo</li>
+          <li>Error Máximo Admisible con Coeficiente de Confianza Fijado</li>
+          </ul>
+          <li>Ingrese los Valores Adicionales:</li>
+          <ul>
+          <li>Tamaño de la Población (solo para M.A.S)</li>
+          <li>Error de Muestreo o Error Máximo Admisible</li>
+          <li>Nivel de Confianza (si aplica)</li>
+          </ul>
+          <li>Calcular:</li>
+          <ul>
           <li>Haga clic en el botón "Calcular" para obtener el tamaño muestral requerido.</li>
+          </ul>
         </ol>
         <hr/>
         <h3>Cálculo del Tamaño Muestral para Estimar una Media</h3>
