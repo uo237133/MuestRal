@@ -17,12 +17,13 @@ calcular_tamano_muestral_media <-
       }
     } else {
       # ERROR MAXIMO ADMISIBLE CON COEFICIENTE DE CONFIANZA FIJADO
-      zalpha <- qnorm((1 - nivel_confianza) / 2)
+      alpha <- 1 - nivel_confianza
+      zalpha <- qnorm((1 - alpha) / 2)
       
       #tamaño muestral m.a.c.r. y suponiendo normalidad
       n01 <- ((zalpha ^ 2) * var) / (e ^ 2)
       #tamaño muestral m.a.c.r. y con des. Tchebychev
-      n02 <- var / (nivel_confianza * (e ^ 2))
+      n02 <- var / (alpha * (e ^ 2))
       
       if (n01 >= 30) {
         n0 <- n01
@@ -67,12 +68,13 @@ calcular_tamano_muestral_proporcion <-
       }
     } else {
       # ERROR MAXIMO ADMISIBLE CON COEFICIENTE DE CONFIANZA FIJADO
-      zalpha <- qnorm((1 - nivel_confianza) / 2)
+      alpha <- 1 - nivel_confianza
+      zalpha <- qnorm((1 - alpha) / 2)
       
       #tamaño muestral m.a.c.r. y suponiendo normalidad
       n01 <- ((zalpha ^ 2) * (P * (1 - P))) / (e ^ 2)
       #tamaño muestral m.a.c.r. y con des. Tchebychev
-      n02 <- (P * (1 - P)) / (nivel_confianza * (e ^ 2))
+      n02 <- (P * (1 - P)) / (alpha * (e ^ 2))
       
       if (n01 >= 30) {
         n0 <- n01

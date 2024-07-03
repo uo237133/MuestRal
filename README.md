@@ -48,9 +48,7 @@ Una vez instalados los paquetes necesarios, puedes ejecutar la aplicación desde
 ```r
 # Cargar y ejecutar la aplicación
 
-shiny::runApp("path/to/MuestRal")
-
-# Reemplaza "path/to/MuestRal" con la ruta al directorio donde clonaste el repositorio.
+shiny::runApp("src")
 ```
 
 ## Uso de la Aplicación
@@ -81,11 +79,6 @@ shiny::runApp("path/to/MuestRal")
 6. **Calcular**:
    - Haga clic en el botón "Calcular" para obtener el tamaño muestral requerido.
 
-### Ejemplos de Uso
-
-- **Estimación de una Media**: Supongamos que queremos estimar la media de una población con una varianza poblacional de 25, un nivel de confianza del 95% y un margen de error de 5. 
-- **Estimación de una Proporción**: Supongamos que queremos estimar la proporción de una población con una proporción esperada de 0.5, un nivel de confianza del 95% y un margen de error de 0.05.
-
 ## Ayuda y Soporte
 
 Si necesitas ayuda o tienes preguntas sobre el uso de la aplicación, consulta la sección de ayuda integrada en la aplicación. Para acceder a la ayuda:
@@ -97,7 +90,6 @@ En esta sección encontrarás:
 
 - **Instrucciones de Uso**: Pasos detallados sobre cómo usar la aplicación.
 - **Cálculo del Tamaño Muestral**: Explicaciones y fórmulas utilizadas para calcular el tamaño muestral para medias y proporciones.
-- **Ejemplos de Cálculo**: Ejemplos detallados para entender mejor cómo funcionan los cálculos.
 
 Para más información o soporte adicional, puedes contactar al desarrollador:
 - Correo electrónico: [UO237133@uniovi.es](mailto:UO237133@uniovi.es)
