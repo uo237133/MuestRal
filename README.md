@@ -10,7 +10,7 @@ Permite calcular el tamaño muestral necesario para estimar medias y proporcione
 - **Métodos de Muestreo**: Soporta Muestreo Aleatorio Simple (M.A.S) y Muestreo Aleatorio con Reposición (M.A.C.R).
 - **Precisión de la Estimación**: Permite seleccionar entre Error de Muestreo y Error Máximo Admisible con Coeficiente de Confianza Fijado.
 - **Interfaz Intuitiva**: Interfaz moderna y fácil de usar, con tooltips para facilitar la comprensión de cada parámetro.
-- **Ayuda y Ejemplos**: Sección de ayuda detallada con ejemplos y explicaciones de cada cálculo.
+- **Ayuda**: Sección de ayuda detallada con fórmulas y explicaciones de cada cálculo.
 
 ## Requisitos del Sistema
 
@@ -59,24 +59,25 @@ shiny::runApp("src")
    - Muestreo Aleatorio Simple (M.A.S)
    - Muestreo Aleatorio con Reposición (M.A.C.R)
 
-2. **Seleccione el Parámetro de Interés**:
+2. **Ingrese el Tamaño de la Población (solo para M.A.S)**
+
+3. **Seleccione el Parámetro de Interés**:
    - Media Poblacional
    - Proporción Poblacional
 
-3. **Ingrese los Valores de los Parámetros Necesarios**:
+4. **Ingrese los valores de los parámetros necesarios**:
    - Varianza Poblacional (para medias)
    - Estimación Conocida de la Proporción (para proporciones)
 
-4. **Seleccione la Precisión de la Estimación**:
+5. **Seleccione la Precisión de la Estimación**:
    - Error de Muestreo
    - Error Máximo Admisible con Coeficiente de Confianza Fijado
 
-5. **Ingrese los Valores Adicionales**:
-   - Tamaño de la Población (solo para M.A.S)
+6. **Ingrese los valores adicionales**:
    - Error de Muestreo o Error Máximo Admisible
    - Nivel de Confianza (si aplica)
 
-6. **Calcular**:
+7. **Calcular**:
    - Haga clic en el botón "Calcular" para obtener el tamaño muestral requerido.
 
 ## Ayuda y Soporte

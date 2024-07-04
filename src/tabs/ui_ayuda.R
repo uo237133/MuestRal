@@ -15,12 +15,13 @@ ui_ayuda <- fluidRow(box(
             <li>Muestreo Aleatorio Simple (M.A.S)</li>
             <li>Muestreo Aleatorio con Reposición (M.A.C.R)</li>
             </ul>
+            <li>Ingrese el Tamaño de la Población (solo para M.A.S)</li>
             <li>Seleccione el Parámetro de Interés:</li>
             <ul>
             <li>Media Poblacional</li>
             <li>Proporción Poblacional</li>
             </ul>
-            <li>Ingrese los Valores de los Parámetros Necesarios:</li>
+            <li>Ingrese los valores de los parámetros necesarios:</li>
             <ul>
             <li>Varianza Poblacional (para medias)</li>
             <li>Estimación Conocida de la Proporción (para proporciones)</li>
@@ -30,9 +31,8 @@ ui_ayuda <- fluidRow(box(
             <li>Error de Muestreo</li>
             <li>Error Máximo Admisible con Coeficiente de Confianza Fijado</li>
             </ul>
-            <li>Ingrese los Valores Adicionales:</li>
+            <li>Ingrese los valores adicionales:</li>
             <ul>
-            <li>Tamaño de la Población (solo para M.A.S)</li>
             <li>Error de Muestreo o Error Máximo Admisible</li>
             <li>Nivel de Confianza (si aplica)</li>
             </ul>
