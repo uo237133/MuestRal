@@ -3,7 +3,7 @@
 ui_inicio <- fluidRow(column(
   width = 12,
   box(
-    title = "Bienvenido",
+    title = "Inicio",
     status = "primary",
     solidHeader = TRUE,
     width = 12,

@@ -59,13 +59,13 @@ shiny::runApp("src")
    - Muestreo Aleatorio Simple (M.A.S)
    - Muestreo Aleatorio con Reposición (M.A.C.R)
 
-2. **Ingrese el Tamaño de la Población (solo para M.A.S)**
+2. **Introduzca el Tamaño de la Población (solo para M.A.S)**
 
 3. **Seleccione el Parámetro de Interés**:
    - Media Poblacional
    - Proporción Poblacional
 
-4. **Ingrese los valores de los parámetros necesarios**:
+4. **Introduzca los valores de los parámetros necesarios**:
    - Varianza Poblacional (para medias)
    - Estimación Conocida de la Proporción (para proporciones)
 
@@ -73,7 +73,7 @@ shiny::runApp("src")
    - Error de Muestreo
    - Error Máximo Admisible con Coeficiente de Confianza Fijado
 
-6. **Ingrese los valores adicionales**:
+6. **Introduzca los valores adicionales**:
    - Error de Muestreo o Error Máximo Admisible
    - Nivel de Confianza (si aplica)
 

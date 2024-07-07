@@ -9,20 +9,20 @@ calcular_tamano_muestral_media <-
       
       if (metodo == "MAS" & !is.null(N)) {
         n <- n0 / (1 + (n0 / N))
-        #tamaño muestral m.a.s. y error muestreo
+        # Tamaño muestral m.a.s. y error muestreo
         salida <- n
       } else {
-        #tamaño muestral m.a.c.r. y error muestreo
+        # Tamaño muestral m.a.c.r. y error muestreo
         salida <- n0
       }
     } else {
       # ERROR MAXIMO ADMISIBLE CON COEFICIENTE DE CONFIANZA FIJADO
       alpha <- 1 - nivel_confianza
-      zalpha <- qnorm((1 - alpha) / 2)
+      zalpha <- qnorm(1 - alpha / 2)
       
-      #tamaño muestral m.a.c.r. y suponiendo normalidad
+      # Tamaño muestral m.a.c.r. y suponiendo normalidad
       n01 <- ((zalpha ^ 2) * var) / (e ^ 2)
-      #tamaño muestral m.a.c.r. y con des. Tchebychev
+      # Tamaño muestral m.a.c.r. y con des. Tchebychev
       n02 <- var / (alpha * (e ^ 2))
       
       if (n01 >= 30) {
@@ -33,9 +33,9 @@ calcular_tamano_muestral_media <-
       }
       
       if (metodo == "MAS" & !is.null(N)) {
-        #tamaño muestral m.a.s. y suponiendo normalidad
+        # Tamaño muestral m.a.s. y suponiendo normalidad
         n1 <- n01 / (1 + (n01 / N))
-        #tamaño muestral m.a.s. y con des. Tchebychev
+        # Tamaño muestral m.a.s. y con des. Tchebychev
         n2 <- n02 / (1 + (n02 / N))
         
         if (n1 >= 100) {
@@ -60,20 +60,20 @@ calcular_tamano_muestral_proporcion <-
       
       if (metodo == "MAS" & !is.null(N)) {
         n <- n0 / (1 + ((n0 - 1) / N))
-        #tamaño muestral m.a.s. y error muestreo
+        # Tamaño muestral m.a.s. y error muestreo
         salida <- n
       } else {
-        #tamaño muestral m.a.c.r. y error muestreo
+        # Tamaño muestral m.a.c.r. y error muestreo
         salida <- n0
       }
     } else {
       # ERROR MAXIMO ADMISIBLE CON COEFICIENTE DE CONFIANZA FIJADO
       alpha <- 1 - nivel_confianza
-      zalpha <- qnorm((1 - alpha) / 2)
+      zalpha <- qnorm(1 - alpha / 2)
       
-      #tamaño muestral m.a.c.r. y suponiendo normalidad
+      # Tamaño muestral m.a.c.r. y suponiendo normalidad
       n01 <- ((zalpha ^ 2) * (P * (1 - P))) / (e ^ 2)
-      #tamaño muestral m.a.c.r. y con des. Tchebychev
+      # Tamaño muestral m.a.c.r. y con des. Tchebychev
       n02 <- (P * (1 - P)) / (alpha * (e ^ 2))
       
       if (n01 >= 30) {
@@ -84,16 +84,16 @@ calcular_tamano_muestral_proporcion <-
       }
       
       if (metodo == "MAS" & !is.null(N)) {
-        #tamaño muestral m.a.s. y suponiendo normalidad
+        # Tamaño muestral m.a.s. y suponiendo normalidad
         n1 <- n01 / (1 + ((n01 - 1) / N))
-        #tamaño muestral m.a.s. y con des. Tchebychev
+        # Tamaño muestral m.a.s. y con des. Tchebychev
         n2 <- n02 / (1 + ((n02 - 1) / N))
         
         if (N >= 60 & n1 / N <= 0.1) {
           salida <- n1
         }
         else {
-          salida <- n2
+          salida <- min(100, n2)
         }
       } else {
         salida <- n0

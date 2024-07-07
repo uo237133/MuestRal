@@ -8,35 +8,35 @@ ui_ayuda <- fluidRow(box(
   withMathJax(
     HTML(
       '<h3>Cómo Usar la Aplicación</h3>
-          <p>Para usar esta aplicación, simplemente siga los siguientes pasos:</p>
+          <p>Para usar esta aplicación, siga los siguientes pasos:</p>
           <ol>
             <li>Seleccione el Tipo de Muestreo:</li>
             <ul>
-            <li>Muestreo Aleatorio Simple (M.A.S)</li>
-            <li>Muestreo Aleatorio con Reposición (M.A.C.R)</li>
+            <li>Muestreo Aleatorio Simple (M.A.S.).</li>
+            <li>Muestreo Aleatorio con Reposición (M.A.C.R.).</li>
             </ul>
-            <li>Ingrese el Tamaño de la Población (solo para M.A.S)</li>
+            <li>Introduzca el Tamaño de la Población (solo para M.A.S.)</li>
             <li>Seleccione el Parámetro de Interés:</li>
             <ul>
-            <li>Media Poblacional</li>
-            <li>Proporción Poblacional</li>
+            <li>Media Poblacional.</li>
+            <li>Proporción Poblacional.</li>
             </ul>
-            <li>Ingrese los valores de los parámetros necesarios:</li>
+            <li>Introduzca los valores de los parámetros necesarios:</li>
             <ul>
-            <li>Varianza Poblacional (para medias)</li>
-            <li>Estimación Conocida de la Proporción (para proporciones)</li>
+            <li>Varianza Poblacional (para medias).</li>
+            <li>Estimación Conocida de la Proporción (para proporciones).</li>
             </ul>
             <li>Seleccione la Precisión de la Estimación:</li>
             <ul>
-            <li>Error de Muestreo</li>
-            <li>Error Máximo Admisible con Coeficiente de Confianza Fijado</li>
+            <li>Error de Muestreo.</li>
+            <li>Error Máximo Admisible con Coeficiente de Confianza Fijado.</li>
             </ul>
-            <li>Ingrese los valores adicionales:</li>
+            <li>Introduzca los valores adicionales:</li>
             <ul>
-            <li>Error de Muestreo o Error Máximo Admisible</li>
-            <li>Nivel de Confianza (si aplica)</li>
+            <li>Error de Muestreo o Error Máximo Admisible.</li>
+            <li>Nivel de Confianza (si aplica).</li>
             </ul>
-            <li>Calcular:</li>
+            <li>Calcule el tamaño de muestra:</li>
             <ul>
             <li>Haga clic en el botón "Calcular" para obtener el tamaño muestral requerido.</li>
             </ul>
@@ -44,75 +44,63 @@ ui_ayuda <- fluidRow(box(
 
           <hr/>
 
-          <h3>Cálculo del Tamaño Muestral para Estimar una Media</h3>
-          <p>Para estimar una media poblacional, utilizamos las siguientes fórmulas:</p>
-
-          <h4>Muestreo Aleatorio Simple (M.A.S) con Varianza Poblacional</h4>
-          <p>Para un error de muestreo específico:</p>
-          <p>$$n = \\frac{N \\cdot \\sigma^2}{N \\cdot E^2 + \\sigma^2}$$</p>
-          <p>Para un error máximo admisible con un nivel de confianza específico:</p>
-          <p>Se evalúan dos fórmulas y se selecciona la más apropiada según las condiciones:</p>
+          <h3>Cálculo del Tamaño Muestral necesario para estimar la Media de una población con Varianza Conocida \\(\\sigma^2\\)</h3>
+          <p>Para calcular el tamaño muestral necesario para estimar una media poblacional se utilizan las siguientes fórmulas:</p>
           <ul>
-            <li>Si el valor de <i>n</i> en la aproximación normal es mayor o igual que 100, entonces:</li>
-            <p>$$n_0 = \\frac{Z_{1-\\alpha/2}^2 \\cdot \\sigma^2}{E^2}$$</p>
-            <p>$$n = \\frac{N \\cdot n_0}{N + n_0}$$</p>
-            <li>En caso contrario, utilizaremos la desigualdad de Tchebychev:</li>
-            <p>$$n_0 = \\frac{\\sigma^2}{\\alpha \\cdot E^2}$$</p>
-            <p>$$n = \\frac{N \\cdot n_0}{N + n_0}$$</p>
+            <li>Con un error de muestreo fijado \\(e\\):</li>
+              <ul>
+                <li>Con un Muestreo Aleatorio con Reposición (M.A.C.R.):</li>
+                  <p>$$n_0 = \\frac{\\sigma^2}{e^2}$$</p>
+                <li>Con un un Muestreo Aleatorio Simple (M.A.S.) sobre una población de \\(N\\) individuos:</li>
+                  <p>$$n = \\frac{n_0}{1+\\frac{n_0}{N}}$$</p>
+              </ul>
+            <li>Con un error máximo admisible \\(e_\\alpha\\) y un nivel de confianza \\(1-\\alpha\\) fijados:</li>
+              <ul>
+                <li>Con un Muestreo Aleatorio con Reposición (M.A.C.R.):</li>
+                  <p>Primero se calculan los valores dados por la aproximación normal y la desigualdad de Tchebychev:</p>
+                  <p>$$n_{01} = \\frac{z^2_{1-\\alpha/2} \\cdot\\sigma^2}{e^2_\\alpha},$$ siendo \\(z^2_{1-\\alpha/2}\\) el cuantil de orden \\(1-\\alpha/2\\) de la distribución normal estándar.</p>
+                  <p>$$n_{02} = \\frac{\\sigma^2}{\\alpha \\cdot e^2_\\alpha}$$</p>
+                  <p>Entonces el tamaño muestral requerido viene dado por:</p>
+                  <p>$$n = \\begin{cases}n_{01} & \\text{si } n_{01}\\geq 30 \\\\ \\min\\{30, n_{02}\\} & \\text{en otro caso.}\\end{cases}$$</p>
+                <li>Con un Muestreo Aleatorio Simple (M.A.S.) sobre una población de \\(N\\) individuos:</li>
+                  <p>Primero se calculan los valores dados por la aproximación normal y la desigualdad de Tchebychev:</p>
+                  <p>$$n_1 = \\frac{n_{01}}{1+\\frac{n_{01}}{N}}$$</p>
+                  <p>$$n_2 = \\frac{n_{02}}{1+\\frac{n_{02}}{N}}$$</p>
+                  <p>Entonces el tamaño muestral requerido viene dado por:</p>
+                  <p>$$n = \\begin{cases}n_{1} & \\text{si } n_{1}\\geq 100 \\\\ \\min\\{100, n_{2}\\} & \\text{en otro caso.}\\end{cases}$$</p>
+              </ul>
           </ul>
-
-          <h4>Muestreo Aleatorio con Reposición (M.A.C.R) con Varianza Poblacional</h4>
-          <p>Para un error de muestreo específico:</p>
-          <p>$$n = \\frac{\\sigma^2}{E^2}$$</p>
-          <p>Para un error máximo admisible con un nivel de confianza específico:</p>
-          <p>Se evalúan dos fórmulas y se selecciona la más apropiada según las condiciones:</p>
-          <ul>
-            <li>Si el valor de <i>n</i> en la aproximación normal es mayor o igual que 30, entonces:</li>
-            <p>$$n = \\frac{Z_{1-\\alpha/2}^2 \\cdot \\sigma^2}{E^2}$$</p>
-            <li>En caso contrario, utilizaremos la desigualdad de Tchebychev:</li>
-            <p>$$n = \\frac{\\sigma^2}{\\alpha \\cdot E^2}$$</p>
-          </ul>
+          <p>En todos los casos, el tamaño muestral definitivo se ajusta al número entero más próximo por exceso.</p>
 
           <hr/>
 
-          <h3>Cálculo del Tamaño Muestral para Estimar una Proporción</h3>
-          <p>Para estimar una proporción poblacional, utilizamos las siguientes fórmulas:</p>
-
-          <h4>Muestreo Aleatorio Simple (M.A.S) con Proporción Poblacional</h4>
-          <p>Para un error de muestreo específico:</p>
-          <p>$$n = \\frac{N \\cdot p \\cdot (1 - p)}{N \\cdot E^2 + p \\cdot (1 - p)}$$</p>
-          <p>Para un error máximo admisible con un nivel de confianza específico:</p>
-          <p>Se evalúan dos fórmulas y se selecciona la más apropiada según las condiciones:</p>
+          <h3>Cálculo del Tamaño Muestral necesario para estimar la Proporción de una población a partir de una Estimación Conocida \\(P\\)</h3>
+          <p>Para calcular el tamaño muestral necesario para estimar una proporción poblacional se utilizan las siguientes fórmulas:</p>
           <ul>
-            <li>Si secumple que <i>N >= 60</i> y <i>n/N <= 0.1</i> de la aproximación normal:</li>
-            <p>$$n_0 = \\frac{Z_{1-\\alpha/2}^2 \\cdot p \\cdot (1 - p)}{E^2}$$</p>
-            <p>$$n = \\frac{N \\cdot n_0}{N + n_0}$$</p>
-            <li>En caso contrario, utilizaremos la desigualdad de Tchebychev:</li>
-            <p>$$n_0 = \\frac{p \\cdot (1 - p)}{\\alpha \\cdot E^2}$$</p>
-            <p>$$n = \\frac{N \\cdot n_0}{N + n_0}$$</p>
+            <li>Con un error de muestreo fijado \\(e\\):</li>
+              <ul>
+                <li>Con un Muestreo Aleatorio con Reposición (M.A.C.R.):</li>
+                  <p>$$n_0 = \\frac{P(1-P)}{e^2}$$</p>
+                <li>Con un un Muestreo Aleatorio Simple (M.A.S.) sobre una población de \\(N\\) individuos:</li>
+                  <p>$$n = \\frac{n_0}{1+\\frac{n_0}{N}}$$</p>
+              </ul>
+            <li>Con un error máximo admisible \\(e_\\alpha\\) y un nivel de confianza \\(1-\\alpha\\) fijados:</li>
+              <ul>
+                <li>Con un Muestreo Aleatorio con Reposición (M.A.C.R.):</li>
+                  <p>Primero se calculan los valores dados por la aproximación normal y la desigualdad de Tchebychev:</p>
+                  <p>$$n_{01} = \\frac{z^2_{1-\\alpha/2} \\cdot P(1-P)}{e^2_\\alpha},$$ siendo \\(z^2_{1-\\alpha/2}\\) el cuantil de orden \\(1-\\alpha/2\\) de la distribución normal estándar.</p>
+                  <p>$$n_{02} = \\frac{P(1-P)}{\\alpha \\cdot e^2_\\alpha}$$</p>
+                  <p>Entonces el tamaño muestral requerido viene dado por:</p>
+                  <p>$$n = \\begin{cases}n_{01} & \\text{si } n_{01}\\geq 30 \\\\ \\min\\{30, n_{02}\\} & \\text{en otro caso.}\\end{cases}$$</p>
+                <li>Con un Muestreo Aleatorio Simple (M.A.S.) sobre una población de \\(N\\) individuos:</li>
+                  <p>Primero se calculan los valores dados por la aproximación normal y la desigualdad de Tchebychev:</p>
+                  <p>$$n_1 = \\frac{n_{01}}{1+\\frac{n_{01}-1}{N}}$$</p>
+                  <p>$$n_2 = \\frac{n_{02}}{1+\\frac{n_{02}-1}{N}}$$</p>
+                  <p>Entonces el tamaño muestral requerido viene dado por:</p>
+                  <p>$$n = \\begin{cases}n_{1} & \\text{si } N\\geq 60 \\text{ y } n_1/N \\leq 0.1 \\\\ \\min\\{100, n_{2}\\} & \\text{en otro caso.}\\end{cases}$$</p>
+              </ul>
           </ul>
-
-          <h4>Muestreo Aleatorio con Reposición (M.A.C.R) con Proporción Poblacional</h4>
-          <p>Para un error de muestreo específico:</p>
-          <p>$$n = \\frac{p \\cdot (1 - p)}{E^2}$$</p>
-          <p>Para un error máximo admisible con un nivel de confianza específico:</p>
-          <p>Se evalúan dos fórmulas y se selecciona la más apropiada según las condiciones:</p>
-          <ul>
-            <li>Si el valor de <i>n</i> en la aproximación normal es mayor o igual que 30, entonces:</li>
-            <p>$$n = \\frac{Z_{1-\\alpha/2}^2 \\cdot p \\cdot (1 - p)}{E^2}$$</p>
-            <li>En caso contrario, utilizaremos la desigualdad de Tchebychev:</li>
-            <p>$$n = \\frac{p \\cdot (1 - p)}{\\alpha \\cdot E^2}$$</p>
-          </ul>
-
-          <h3>Parámetros</h3>
-          <ul>
-            <li><b>N:</b> Tamaño de la población (solo para M.A.S).</li>
-            <li><b>\\(\\sigma^2\\):</b> Varianza poblacional.</li>
-            <li><b>p:</b> Estimación Conocida de la Proporción.</li>
-            <li><b>E:</b> Error de muestreo/Error máximo admisible.</li>
-            <li><b>\\(\\alpha\\):</b> Nivel de confianza deseado.</li>
-            <li><b>\\(Z_{1-\\alpha/2}\\):</b> Valor Z normalizado correspondiente al nivel de confianza deseado.</li>
-          </ul>'
+      <p>En todos los casos, el tamaño muestral definitivo se ajusta al número entero más próximo por exceso.</p>'
     )
   )
 ))
