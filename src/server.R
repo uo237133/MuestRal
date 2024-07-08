@@ -16,7 +16,7 @@ server <- function(input, output, session) {
     if (input$sampling_method == "MAS") {
       if (is.na(input$population_size) || input$population_size <= 0) {
         showFeedbackDanger("population_size",
-                           "El tamaño de la población deber ser un número mayor que 0.")
+                           "El tamaño de la población debe ser un número mayor que 0.")
       } else {
         hideFeedback("population_size")
       }
@@ -38,7 +38,7 @@ server <- function(input, output, session) {
     if (input$parameter_of_interest == "media") {
       if (is.na(input$var) || input$var <= 0) {
         showFeedbackDanger("var",
-                           "La varianza poblacional deber ser un número mayor que 0.")
+                           "La varianza poblacional debe ser un número mayor que 0.")
       } else {
         hideFeedback("var")
       }
@@ -77,7 +77,7 @@ server <- function(input, output, session) {
     if (input$estimation_precision == "error_muestreo") {
       if (is.na(input$sampling_error) || input$sampling_error <= 0) {
         showFeedbackDanger("sampling_error",
-                           "El error de muestreo deber ser un número mayor que 0.")
+                           "El error de muestreo debe ser un número mayor que 0.")
       } else {
         hideFeedback("sampling_error")
       }
@@ -90,7 +90,7 @@ server <- function(input, output, session) {
     if (input$estimation_precision == "error_max_admisible") {
       if (is.na(input$max_error) || input$max_error <= 0) {
         showFeedbackDanger("max_error",
-                           "El error máximo admisible deber ser un número mayor que 0.")
+                           "El error máximo admisible debe ser un número mayor que 0.")
       } else {
         hideFeedback("max_error")
       }
@@ -133,7 +133,7 @@ server <- function(input, output, session) {
         (is.na(input$population_size) ||
          input$population_size <= 0)) {
       showFeedbackDanger("population_size",
-                         "El tamaño de la población deber ser un número mayor que 0.")
+                         "El tamaño de la población debe ser un número mayor que 0.")
       valid <- FALSE
     }
     
@@ -147,7 +147,7 @@ server <- function(input, output, session) {
     if (input$parameter_of_interest == "media" &&
         (is.na(input$var) || input$var <= 0)) {
       showFeedbackDanger("var",
-                         "La varianza poblacional deber ser un número mayor que 0.")
+                         "La varianza poblacional debe ser un número mayor que 0.")
       valid <- FALSE
     }
     
@@ -175,14 +175,14 @@ server <- function(input, output, session) {
         (is.na(input$sampling_error) ||
          input$sampling_error <= 0)) {
       showFeedbackDanger("sampling_error",
-                         "El error de muestreo deber ser un número mayor que 0.")
+                         "El error de muestreo debe ser un número mayor que 0.")
       valid <- FALSE
     }
     
     if (input$estimation_precision == "error_max_admisible") {
       if (is.na(input$max_error) || input$max_error <= 0) {
         showFeedbackDanger("max_error",
-                           "El error máximo admisible deber ser un número mayor que 0.")
+                           "El error máximo admisible debe ser un número mayor que 0.")
         valid <- FALSE
       }
       if (is.na(input$confidence_level) ||
