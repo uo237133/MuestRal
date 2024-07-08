@@ -16,7 +16,7 @@ server <- function(input, output, session) {
     if (input$sampling_method == "MAS") {
       if (is.na(input$population_size) || input$population_size <= 0) {
         showFeedbackDanger("population_size",
-                           "El tamaño de la población debe ser mayor que 0.")
+                           "El tamaño de la población deber ser un número mayor que 0.")
       } else {
         hideFeedback("population_size")
       }
@@ -37,7 +37,8 @@ server <- function(input, output, session) {
   observe({
     if (input$parameter_of_interest == "media") {
       if (is.na(input$var) || input$var <= 0) {
-        showFeedbackDanger("var", "La varianza poblacional debe ser mayor que 0.")
+        showFeedbackDanger("var",
+                           "La varianza poblacional deber ser un número mayor que 0.")
       } else {
         hideFeedback("var")
       }
@@ -51,8 +52,10 @@ server <- function(input, output, session) {
       if (is.na(input$proportion_estimate) ||
           input$proportion_estimate < 0 ||
           input$proportion_estimate > 1) {
-        showFeedbackDanger("proportion_estimate",
-                           "La estimación de la proporción debe estar entre 0 y 1.")
+        showFeedbackDanger(
+          "proportion_estimate",
+          "La estimación de la proporción debe ser un número entre 0 y 1."
+        )
       } else {
         hideFeedback("proportion_estimate")
       }
@@ -74,7 +77,7 @@ server <- function(input, output, session) {
     if (input$estimation_precision == "error_muestreo") {
       if (is.na(input$sampling_error) || input$sampling_error <= 0) {
         showFeedbackDanger("sampling_error",
-                           "El error de muestreo debe ser mayor que 0.")
+                           "El error de muestreo deber ser un número mayor que 0.")
       } else {
         hideFeedback("sampling_error")
       }
@@ -87,7 +90,7 @@ server <- function(input, output, session) {
     if (input$estimation_precision == "error_max_admisible") {
       if (is.na(input$max_error) || input$max_error <= 0) {
         showFeedbackDanger("max_error",
-                           "El error máximo admisible debe ser mayor que 0.")
+                           "El error máximo admisible deber ser un número mayor que 0.")
       } else {
         hideFeedback("max_error")
       }
@@ -95,7 +98,7 @@ server <- function(input, output, session) {
           input$confidence_level <= 0 ||
           input$confidence_level >= 1) {
         showFeedbackDanger("confidence_level",
-                           "El nivel de confianza debe estar entre 0 y 1.")
+                           "El nivel de confianza debe ser un número entre 0 y 1.")
       } else {
         hideFeedback("confidence_level")
       }
@@ -130,7 +133,7 @@ server <- function(input, output, session) {
         (is.na(input$population_size) ||
          input$population_size <= 0)) {
       showFeedbackDanger("population_size",
-                         "El tamaño de la población debe ser mayor que 0.")
+                         "El tamaño de la población deber ser un número mayor que 0.")
       valid <- FALSE
     }
     
@@ -143,7 +146,8 @@ server <- function(input, output, session) {
     
     if (input$parameter_of_interest == "media" &&
         (is.na(input$var) || input$var <= 0)) {
-      showFeedbackDanger("var", "La varianza poblacional debe ser mayor que 0.")
+      showFeedbackDanger("var",
+                         "La varianza poblacional deber ser un número mayor que 0.")
       valid <- FALSE
     }
     
@@ -153,8 +157,10 @@ server <- function(input, output, session) {
           input$proportion_estimate < 0 ||
           input$proportion_estimate > 1
         )) {
-      showFeedbackDanger("proportion_estimate",
-                         "La estimación de la proporción debe estar entre 0 y 1.")
+      showFeedbackDanger(
+        "proportion_estimate",
+        "La estimación de la proporción debe ser un número entre 0 y 1."
+      )
       valid <- FALSE
     }
     
@@ -169,21 +175,21 @@ server <- function(input, output, session) {
         (is.na(input$sampling_error) ||
          input$sampling_error <= 0)) {
       showFeedbackDanger("sampling_error",
-                         "El error de muestreo debe ser mayor que 0.")
+                         "El error de muestreo deber ser un número mayor que 0.")
       valid <- FALSE
     }
     
     if (input$estimation_precision == "error_max_admisible") {
       if (is.na(input$max_error) || input$max_error <= 0) {
         showFeedbackDanger("max_error",
-                           "El error máximo admisible debe ser mayor que 0.")
+                           "El error máximo admisible deber ser un número mayor que 0.")
         valid <- FALSE
       }
       if (is.na(input$confidence_level) ||
           input$confidence_level <= 0 ||
           input$confidence_level >= 1) {
         showFeedbackDanger("confidence_level",
-                           "El nivel de confianza debe estar entre 0 y 1.")
+                           "El nivel de confianza debe ser un número entre 0 y 1.")
         valid <- FALSE
       }
     }
@@ -235,81 +241,66 @@ server <- function(input, output, session) {
       # Crear el texto de resumen elaborado
       resultado <-
         paste0(
-          "<div style='font-size: 24px; font-weight: bold; text-align: center;'>El tamaño muestral requerido es: ",
+          "<div style='font-size: 24px; font-weight: bold; text-align: center;'>",
+          "El tamaño muestral mínimo requerido es:</div>",
+          "<div style='font-size: 40px; font-weight: bold; text-align: center;'>",
           n,
           "</div>"
         )
-      resumen <-
-        paste0(
-          "Hemos calculado el tamaño muestral teniendo en cuenta que el tipo de muestreo es ",
-          ifelse(
-            input$sampling_method == "MAS",
-            "aleatorio simple (M.A.S)",
-            "aleatorio con reposición (M.A.C.R)"
-          ),
-          " y el parámetro de interés es la ",
-          ifelse(
-            input$parameter_of_interest == "media",
-            "media poblacional",
-            "proporción poblacional"
-          ),
-          "."
-        )
       
-      if (!is.null(N)) {
-        resumen <-
-          paste0(resumen,
-                 " El tamaño de la población considerado es de ",
-                 N,
-                 " individuos.")
+      part1 <- paste(
+        "Se ha calculado el tamaño muestral",
+        "teniendo en cuenta que se quiere utilizar un muestreo"
+      )
+      if (input$sampling_method == "MAS") {
+        part2 <- "aleatorio simple (M.A.S.)"
+        part6 <-
+          paste("El tamaño de la población es de", N, "individios.")
+      } else {
+        part2 <- "aleatorio con reposición (M.A.C.R.)"
+        part6 <- NULL
       }
-      
+      part3 <- "y el parámetro de interés es la"
       if (input$parameter_of_interest == "media") {
-        resumen <-
-          paste0(resumen,
-                 " La varianza poblacional utilizada es de ",
-                 input$var)
+        part4 <- "media"
+        part7 <-
+          paste("La varianza poblacional utilizada es", input$var)
       } else {
-        resumen <-
-          paste0(
-            resumen,
-            " La estimación conocida de la proporción es de ",
-            input$proportion_estimate
-          )
+        part4 <- "proporción"
+        part7 <- paste("La estimación conocida de la proporción es",
+                       input$proportion_estimate)
       }
-      
-      resumen <-
-        paste0(
-          resumen,
-          " y la precisión de la estimación está determinada por ",
-          ifelse(
-            input$estimation_precision == "error_muestreo",
-            "el error de muestreo",
-            "el error máximo admisible con un nivel de confianza fijado"
-          )
-        )
-      
+      part5 <- "poblacional."
+      part8 <-
+        "y la precisión de la estimación está determinada por"
       if (input$estimation_precision == "error_muestreo") {
-        resumen <-
-          paste0(resumen,
-                 " cuyo valor es de ",
-                 input$sampling_error,
-                 ".")
+        part9 <- paste("el error de muestreo, cuyo valor es",
+                       input$sampling_error,
+                       ".")
       } else {
-        resumen <-
+        part9 <-
           paste0(
-            resumen,
-            " cuyos valores son ",
+            "el error máximo admisible con un nivel de confianza",
+            " fijado, cuyos valores son ",
             input$max_error,
             " y ",
             input$confidence_level * 100,
-            "% respectivamente."
+            "%, respectivamente."
           )
       }
+      resumen <- paste(part1,
+                       part2,
+                       part3,
+                       part4,
+                       part5,
+                       part6,
+                       part7,
+                       part8,
+                       part9)
       
       result(HTML(paste0(resultado, "<br>", resumen)))
     } else {
-      result(HTML("Corrige los errores antes de continuar."))
+      result(HTML("Corrija los errores antes de continuar."))
     }
   })
   

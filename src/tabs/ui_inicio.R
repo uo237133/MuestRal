@@ -12,17 +12,21 @@ ui_inicio <- fluidRow(column(
       style = "text-align: center;",
       tags$img(
         src = "img/MuestRal_Web_Banner.png",
+        alt = "MuestRal",
         height = "300px",
         style = "max-width: 100%; height: auto;"
       ),
       tags$h4("MuestRal", style = "margin-top: 20px;"),
       tags$p(
-        "Una aplicación Shiny para calcular tamaños muestrales de manera eficiente y precisa."
+        "Aplicación web interactiva para el cálculo del tamaño muestral con Shiny."
       ),
       tags$hr(),
       tags$h2("Acerca de"),
       tags$p(
-        "MuestRal es una herramienta diseñada para investigadores, estadísticos y cualquier persona interesada en calcular tamaños muestrales para estudios de investigación. Esta aplicación permite calcular el tamaño muestral necesario para estimar medias y proporciones poblacionales utilizando diferentes metodologías y parámetros."
+        "MuestRal es una herramienta diseñada para investigadores, estadísticos y cualquier persona interesada en calcular tamaños muestrales para estudios de investigación."
+      ),
+      tags$p(
+        "Esta aplicación permite calcular el tamaño muestral necesario para estimar medias y proporciones poblacionales utilizando diferentes metodologías y parámetros."
       ),
       tags$p("Desarrollador: Iñaki Salgado Uralde"),
       tags$p("Versión: 1.0.0"),
@@ -49,11 +53,13 @@ ui_inicio <- fluidRow(column(
         style = "text-align: center;",
         tags$img(
           src = "img/universidad_oviedo.png",
+          alt = "Universidad de Oviedo",
           height = "150px",
           style = "margin: 10px;"
         ),
         tags$img(
           src = "img/ingenieria_informatica_oviedo.png",
+          alt = "Escuela de Ingenieria Informatica",
           height = "150px",
           style = "margin: 10px;"
         )

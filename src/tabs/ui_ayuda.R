@@ -15,7 +15,7 @@ ui_ayuda <- fluidRow(box(
             <li>Muestreo Aleatorio Simple (M.A.S.).</li>
             <li>Muestreo Aleatorio con Reposición (M.A.C.R.).</li>
             </ul>
-            <li>Introduzca el Tamaño de la Población (solo para M.A.S.)</li>
+            <li>Introduzca el Tamaño de la Población (solo para M.A.S.):</li>
             <li>Seleccione el Parámetro de Interés:</li>
             <ul>
             <li>Media Poblacional.</li>
@@ -51,7 +51,7 @@ ui_ayuda <- fluidRow(box(
               <ul>
                 <li>Con un Muestreo Aleatorio con Reposición (M.A.C.R.):</li>
                   <p>$$n_0 = \\frac{\\sigma^2}{e^2}$$</p>
-                <li>Con un un Muestreo Aleatorio Simple (M.A.S.) sobre una población de \\(N\\) individuos:</li>
+                <li>Con un Muestreo Aleatorio Simple (M.A.S.) sobre una población de \\(N\\) individuos:</li>
                   <p>$$n = \\frac{n_0}{1+\\frac{n_0}{N}}$$</p>
               </ul>
             <li>Con un error máximo admisible \\(e_\\alpha\\) y un nivel de confianza \\(1-\\alpha\\) fijados:</li>
@@ -81,8 +81,8 @@ ui_ayuda <- fluidRow(box(
               <ul>
                 <li>Con un Muestreo Aleatorio con Reposición (M.A.C.R.):</li>
                   <p>$$n_0 = \\frac{P(1-P)}{e^2}$$</p>
-                <li>Con un un Muestreo Aleatorio Simple (M.A.S.) sobre una población de \\(N\\) individuos:</li>
-                  <p>$$n = \\frac{n_0}{1+\\frac{n_0}{N}}$$</p>
+                <li>Con un Muestreo Aleatorio Simple (M.A.S.) sobre una población de \\(N\\) individuos:</li>
+                  <p>$$n = \\frac{n_0}{1+\\frac{n_{0}-1}{N}}$$</p>
               </ul>
             <li>Con un error máximo admisible \\(e_\\alpha\\) y un nivel de confianza \\(1-\\alpha\\) fijados:</li>
               <ul>

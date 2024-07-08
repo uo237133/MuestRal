@@ -1,12 +1,6 @@
 # src/packages.R
 
-# Cargar librerías
-#library(shiny)
-#library(shinydashboard)
-#library(shinyFeedback)
-#library(shinyBS)
-
-# Install and load packages
+# Instalar y cargar los paquetes necesarios
 list.of.packages <- c("shiny",
                       "shinydashboard",
                       "shinyFeedback",
@@ -21,10 +15,10 @@ lapply(list.of.packages,
          library(pkg, character.only = TRUE)
        })
 
-# Cargar archivos de configuración
+# Cargar fórmulas
 source("formulas.R")
 
-# Añadir la ruta de los recursos estático
+# Añadir la ruta de los recursos estáticos
 addResourcePath("img", "../img")
 
 # Cargar archivos UI
