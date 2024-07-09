@@ -57,16 +57,16 @@ ui_ayuda <- fluidRow(box(
             <li>Con un error máximo admisible \\(e_\\alpha\\) y un nivel de confianza \\(1-\\alpha\\) fijados:</li>
               <ul>
                 <li>Con un Muestreo Aleatorio con Reposición (M.A.C.R.):</li>
-                  <p>Primero se calculan los valores dados por la aproximación normal y la desigualdad de Tchebychev:</p>
+                  <p>Primero se calculan los valores dados por la aproximación normal (\\(n_{01}\\)) y la desigualdad de Tchebychev (\\(n_{02}\\)):</p>
                   <p>$$n_{01} = \\frac{z^2_{1-\\alpha/2} \\cdot\\sigma^2}{e^2_\\alpha},$$ siendo \\(z^2_{1-\\alpha/2}\\) el cuantil de orden \\(1-\\alpha/2\\) de la distribución normal estándar.</p>
                   <p>$$n_{02} = \\frac{\\sigma^2}{\\alpha \\cdot e^2_\\alpha}$$</p>
-                  <p>Entonces el tamaño muestral requerido viene dado por:</p>
+                  <p>Entonces el tamaño muestral requerido (\\(n\\)) viene dado por:</p>
                   <p>$$n = \\begin{cases}n_{01} & \\text{si } n_{01}\\geq 30 \\\\ \\min\\{30, n_{02}\\} & \\text{en otro caso.}\\end{cases}$$</p>
                 <li>Con un Muestreo Aleatorio Simple (M.A.S.) sobre una población de \\(N\\) individuos:</li>
-                  <p>Primero se calculan los valores dados por la aproximación normal y la desigualdad de Tchebychev:</p>
+                  <p>Primero se calculan los valores dados por la aproximación normal (\\(n_{1}\\)) y la desigualdad de Tchebychev (\\(n_{2}\\)):</p>
                   <p>$$n_1 = \\frac{n_{01}}{1+\\frac{n_{01}}{N}}$$</p>
                   <p>$$n_2 = \\frac{n_{02}}{1+\\frac{n_{02}}{N}}$$</p>
-                  <p>Entonces el tamaño muestral requerido viene dado por:</p>
+                  <p>Entonces el tamaño muestral requerido (\\(n\\)) viene dado por:</p>
                   <p>$$n = \\begin{cases}n_{1} & \\text{si } n_{1}\\geq 100 \\\\ \\min\\{100, n_{2}\\} & \\text{en otro caso.}\\end{cases}$$</p>
               </ul>
           </ul>
@@ -87,16 +87,16 @@ ui_ayuda <- fluidRow(box(
             <li>Con un error máximo admisible \\(e_\\alpha\\) y un nivel de confianza \\(1-\\alpha\\) fijados:</li>
               <ul>
                 <li>Con un Muestreo Aleatorio con Reposición (M.A.C.R.):</li>
-                  <p>Primero se calculan los valores dados por la aproximación normal y la desigualdad de Tchebychev:</p>
+                  <p>Primero se calculan los valores dados por la aproximación normal (\\(n_{01}\\)) y la desigualdad de Tchebychev (\\(n_{02}\\)):</p>
                   <p>$$n_{01} = \\frac{z^2_{1-\\alpha/2} \\cdot P(1-P)}{e^2_\\alpha},$$ siendo \\(z^2_{1-\\alpha/2}\\) el cuantil de orden \\(1-\\alpha/2\\) de la distribución normal estándar.</p>
                   <p>$$n_{02} = \\frac{P(1-P)}{\\alpha \\cdot e^2_\\alpha}$$</p>
-                  <p>Entonces el tamaño muestral requerido viene dado por:</p>
+                  <p>Entonces el tamaño muestral requerido (\\(n\\)) viene dado por:</p>
                   <p>$$n = \\begin{cases}n_{01} & \\text{si } n_{01}\\geq 30 \\\\ \\min\\{30, n_{02}\\} & \\text{en otro caso.}\\end{cases}$$</p>
                 <li>Con un Muestreo Aleatorio Simple (M.A.S.) sobre una población de \\(N\\) individuos:</li>
-                  <p>Primero se calculan los valores dados por la aproximación normal y la desigualdad de Tchebychev:</p>
+                  <p>Primero se calculan los valores dados por la aproximación normal (\\(n_{1}\\)) y la desigualdad de Tchebychev (\\(n_{2}\\)):</p>
                   <p>$$n_1 = \\frac{n_{01}}{1+\\frac{n_{01}-1}{N}}$$</p>
                   <p>$$n_2 = \\frac{n_{02}}{1+\\frac{n_{02}-1}{N}}$$</p>
-                  <p>Entonces el tamaño muestral requerido viene dado por:</p>
+                  <p>Entonces el tamaño muestral requerido (\\(n\\)) viene dado por:</p>
                   <p>$$n = \\begin{cases}n_{1} & \\text{si } N\\geq 60 \\text{ y } n_1/N \\leq 0.1 \\\\ \\min\\{100, n_{2}\\} & \\text{en otro caso.}\\end{cases}$$</p>
               </ul>
           </ul>
