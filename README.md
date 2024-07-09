@@ -1,13 +1,13 @@
 # MuestRal
 
-MuestRal es una aplicación Shiny diseñada para calcular tamaños muestrales de manera eficiente y precisa.  
-Esta herramienta es ideal para investigadores, estadísticos y cualquier persona interesada en calcular tamaños muestrales para estudios de investigación.  
-Permite calcular el tamaño muestral necesario para estimar medias y proporciones poblacionales utilizando diferentes metodologías y parámetros.
+Aplicación web interactiva para el cálculo del tamaño muestral con Shiny.  
+MuestRal es una herramienta diseñada para investigadores, estadísticos y cualquier persona interesada en calcular tamaños muestrales para estudios de investigación.  
+Esta aplicación permite calcular el tamaño muestral necesario para estimar medias y proporciones poblacionales utilizando diferentes metodologías y parámetros.
 
 ## Características
 
 - **Cálculo del Tamaño Muestral para Medias y Proporciones**: Calcula el tamaño muestral requerido para estimar medias y proporciones poblacionales.
-- **Métodos de Muestreo**: Soporta Muestreo Aleatorio Simple (M.A.S) y Muestreo Aleatorio con Reposición (M.A.C.R).
+- **Métodos de Muestreo**: Soporta Muestreo Aleatorio Simple (M.A.S.) y Muestreo Aleatorio con Reposición (M.A.C.R.).
 - **Precisión de la Estimación**: Permite seleccionar entre Error de Muestreo y Error Máximo Admisible con Coeficiente de Confianza Fijado.
 - **Interfaz Intuitiva**: Interfaz moderna y fácil de usar, con tooltips para facilitar la comprensión de cada parámetro.
 - **Ayuda**: Sección de ayuda detallada con fórmulas y explicaciones de cada cálculo.
@@ -56,10 +56,10 @@ shiny::runApp("src")
 ### Instrucciones de Uso
 
 1. **Seleccione el Tipo de Muestreo**:
-   - Muestreo Aleatorio Simple (M.A.S)
-   - Muestreo Aleatorio con Reposición (M.A.C.R)
+   - Muestreo Aleatorio Simple (M.A.S.)
+   - Muestreo Aleatorio con Reposición (M.A.C.R.)
 
-2. **Introduzca el Tamaño de la Población (solo para M.A.S)**
+2. **Introduzca el Tamaño de la Población (solo para M.A.S.)**
 
 3. **Seleccione el Parámetro de Interés**:
    - Media Poblacional
@@ -129,8 +129,10 @@ Este proyecto está licenciado bajo la Licencia MIT. Para más detalles, consult
 
 Este proyecto fue desarrollado en colaboración con la Universidad de Oviedo y la Escuela de Ingeniería Informática de Oviedo.
 
-![Universidad de Oviedo](img/universidad_oviedo.png)
-![Escuela de Ingeniería Informática de Oviedo](img/ingenieria_informatica_oviedo.png)
+<p align="center">
+  <img src="img/universidad_oviedo.png" alt="Universidad de Oviedo" width="300"/>
+  <img src="img/ingenieria_informatica_oviedo.png" alt="Escuela de Ingeniería Informática de Oviedo" width="300"/>
+</p>
 
 ## Referencias
 

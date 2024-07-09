@@ -15,7 +15,7 @@ ui_ayuda <- fluidRow(box(
             <li>Muestreo Aleatorio Simple (M.A.S.).</li>
             <li>Muestreo Aleatorio con Reposición (M.A.C.R.).</li>
             </ul>
-            <li>Introduzca el Tamaño de la Población (solo para M.A.S.):</li>
+            <li>Introduzca el Tamaño de la Población (solo para M.A.S.)</li>
             <li>Seleccione el Parámetro de Interés:</li>
             <ul>
             <li>Media Poblacional.</li>

@@ -130,7 +130,7 @@ ui_calculo <- fluidPage(useShinyFeedback(),
                             # Tooltips
                             bsTooltip(
                               "sampling_method_help",
-                              "El tipo de muestreo define la forma en la que los individuos de la población son seleccionados para la muestra. En el muestreo aleatorio simple (M.A.S.) los individuos se seleccionan al azar y con reemplazamiento, mientras que en el muestreo aleatorio con repetición (M.A.C.R.), un individuo puede ser seleccionado más de una vez.",
+                              "El tipo de muestreo define la forma en la que los individuos de la población son seleccionados para la muestra. En el muestreo aleatorio simple (M.A.S.) los individuos se seleccionan al azar y con reemplazamiento, mientras que en el muestreo aleatorio con reposición (M.A.C.R.), un individuo puede ser seleccionado más de una vez.",
                               "right",
                               options = list(container = "body")
                             ),
