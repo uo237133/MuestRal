@@ -1,9 +1,9 @@
-# src/app.R
+# app.R
 
 # Cargar UI
-source("ui.R")
+source("src/ui.R")
 
 # Cargar servidor
-source("server.R")
+source("src/server.R")
 
 shinyApp(ui = ui, server = server)

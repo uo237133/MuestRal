@@ -66,7 +66,6 @@ ui_inicio <- fluidRow(column(
       ),
       tags$hr(),
       tags$h2("Referencias"),
-      tags$p("Lohr, S. L. (2010). Sampling: Design and Analysis (2nd ed.)."),
       tags$p(
         "Pérez López, C. (2005). Muestreo estadístico: conceptos y problemas resueltos."
       ),

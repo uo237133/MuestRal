@@ -1,6 +1,6 @@
 # src/ui.R
 
-source("packages.R")
+source("src/packages.R")
 
 ui <- dashboardPage(
   dashboardHeader(title = "MuestRal"),

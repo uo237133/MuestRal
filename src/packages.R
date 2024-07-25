@@ -1,5 +1,14 @@
 # src/packages.R
 
+# Establecer el repositorio CRAN
+options(repos = c(CRAN = "https://cran.rstudio.com/"))
+
+# El resto del código de instalación de paquetes
+if (!requireNamespace("shiny", quietly = TRUE)) install.packages("shiny")
+if (!requireNamespace("shinydashboard", quietly = TRUE)) install.packages("shinydashboard")
+if (!requireNamespace("shinyBS", quietly = TRUE)) install.packages("shinyBS")
+if (!requireNamespace("shinyFeedback", quietly = TRUE)) install.packages("shinyFeedback")
+
 # Instalar y cargar los paquetes necesarios
 list.of.packages <- c("shiny",
                       "shinydashboard",
@@ -16,12 +25,12 @@ lapply(list.of.packages,
        })
 
 # Cargar fórmulas
-source("formulas.R")
+source("src/formulas.R")
 
 # Añadir la ruta de los recursos estáticos
-addResourcePath("img", "../img")
+addResourcePath("img", "./img")
 
 # Cargar archivos UI
-source("tabs/ui_inicio.R")
-source("tabs/ui_calculo.R")
-source("tabs/ui_ayuda.R")
+source("src/tabs/ui_inicio.R")
+source("src/tabs/ui_calculo.R")
+source("src/tabs/ui_ayuda.R")

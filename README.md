@@ -48,7 +48,7 @@ Una vez instalados los paquetes necesarios, puedes ejecutar la aplicación desde
 ```r
 # Cargar y ejecutar la aplicación
 
-shiny::runApp("src")
+shiny::runApp()
 ```
 
 ## Uso de la Aplicación
@@ -136,7 +136,6 @@ Este proyecto fue desarrollado en colaboración con la Universidad de Oviedo y l
 
 ## Referencias
 
-- Lohr, S. L. (2010). Sampling: Design and Analysis (2nd ed.).
 - Pérez López, C. (2005). Muestreo estadístico: conceptos y problemas resueltos.
 - [Shiny Documentation - RStudio](https://shiny.rstudio.com/articles/)
 - [R Project Documentation](https://cran.r-project.org/manuals.html)
